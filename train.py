@@ -3,9 +3,11 @@ import pandas as pd
 import os
 from sklearn.tree import DecisionTreeClassifier
 
-# Import your custom modules
-from util.feature_selectors import run_filter, run_wrapper, run_embedded
+# from util.feature_selectors import run_filter, run_wrapper, run_embedded
 from util.evaluation import evaluate_model, calculate_overlap
+import joblib
+import util.tree_visualize as tv
+
 
 def load_split_data(data_path):
     """
@@ -50,8 +52,9 @@ if __name__ == "__main__":
     # Fixed settings
     SEED = 42
     
-    # 2. Prepare Data (using the new split pipeline)
-    X_train, X_test, y_train, y_test = load_split_data(data_path)
+    # 2. Prepare Data (load pre-split data)
+    split_path = f"{data_path}/split"
+    (X_train, y_train), (X_test, y_test) = load_split_data(split_path)
     print(f"Data shape: X_train {X_train.shape}, X_test {X_test.shape}")
 
     # Create results directory
@@ -60,19 +63,22 @@ if __name__ == "__main__":
 
     if exp_idx == 0:
         print("\n--- Running Baseline (All Features) ---")
-        model = DecisionTreeClassifier(random_state=SEED)
-        model.fit(X_train, y_train)
-        
-        # Use your custom evaluation tool
-        metrics = evaluate_model(model, X_test, y_test)
-        print(f"Baseline Metrics: {metrics}")
-        
-        # Save results
-        output_file = f"{results_dir}/baseline_metrics.json"
-        with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(metrics, f, indent=4, ensure_ascii=False)
-            
-        print(f"✅ Baseline complete! Logged to {output_file}")
+        clf = DecisionTreeClassifier(
+            criterion='entropy',
+            random_state=SEED,
+            class_weight='balanced'
+        )
+        clf.fit(X_train, y_train)
+
+        model_file=f"model/exp_{i if exp_idx != 0 else "baseline/"}
+        model_name=f"exp_{i if exp_idx != 0 else "baseline"}.pkl"
+
+        joblib.dump(clf, f"{model_file}/{model_name}")
+        print(f"✅ Baseline model saved to {model_file}/{model_name}")
+        tv.visualize_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(clf, save_path=f"{results_dir}/baseline_tree_matplotlib.png", feature_names=X_train.columns, class_names=['Not Passed', 'Passed'], max_depth=10)
+
+
 
     elif exp_idx == 1:
         print("\n--- Running Experiment 1 (Feature Selection Comparisons) ---")
