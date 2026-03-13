@@ -1,5 +1,7 @@
 import process.download_process as dp
+import process.split_data as sd
 import util.feature_distribution as fd
+import util.data_compose as dc
 import os
 import json
 import pandas as pd
@@ -33,4 +35,15 @@ if __name__ == "__main__":
         dp.caculate_median(data_convert, dataset_path, col, med_mean_path)
 
     fd.draw_all_pictures(data_convert, med_mean_path, missing_value_path, visual_path)
+
+    # 分割訓練集和測試集
+    split_save_path = "dataset/split"
+    (train_data, train_label), (test_data, test_label) = sd.split_data(split_save_path, split_ratio=0.8)
+    
+    # 可視化訓練集和測試集的分佈對比
+    train_full = pd.read_csv(f"{split_save_path}/train.csv")
+    test_full = pd.read_csv(f"{split_save_path}/test.csv")
+    dc.visualize_train_test_distribution(train_full, test_full, "result/stastic/compose/image")
+
+
 
