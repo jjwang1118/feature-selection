@@ -1,0 +1,66 @@
+{
+    "matchup_1_wrapper_vs_filter": {
+        "n_features": 4,
+        "feature_overlap_ratio": 0.6,
+        "wrapper": {
+            "selected_features": [
+                "ai_generated_content_percentage",
+                "last_exam_score",
+                "assignment_scores_avg",
+                "concept_understanding_score"
+            ],
+            "metrics": {
+                "accuracy": 0.9,
+                "precision": 0.9502133712660028,
+                "recall": 0.9368863955119214,
+                "f1_score": 0.943502824858757
+            }
+        },
+        "filter": {
+            "selected_features": [
+                "study_hours_per_day",
+                "last_exam_score",
+                "assignment_scores_avg",
+                "concept_understanding_score"
+            ],
+            "metrics": {
+                "accuracy": 0.903125,
+                "precision": 0.9523131672597864,
+                "recall": 0.938288920056101,
+                "f1_score": 0.9452490286117979
+            }
+        }
+    },
+    "matchup_2_embedded_vs_filter": {
+        "n_features": 4,
+        "feature_overlap_ratio": 0.6,
+        "embedded": {
+            "selected_features": [
+                "ai_generated_content_percentage",
+                "last_exam_score",
+                "assignment_scores_avg",
+                "concept_understanding_score"
+            ],
+            "metrics": {
+                "accuracy": 0.9,
+                "precision": 0.9502133712660028,
+                "recall": 0.9368863955119214,
+                "f1_score": 0.943502824858757
+            }
+        },
+        "filter": {
+            "selected_features": [
+                "study_hours_per_day",
+                "last_exam_score",
+                "assignment_scores_avg",
+                "concept_understanding_score"
+            ],
+            "metrics": {
+                "accuracy": 0.903125,
+                "precision": 0.9523131672597864,
+                "recall": 0.938288920056101,
+                "f1_score": 0.9452490286117979
+            }
+        }
+    }
+}
