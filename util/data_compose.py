@@ -118,3 +118,55 @@ def _plot_feature_comparison(train_col, test_col, col_name, save_path):
     plt.close()
     
     print(f"✅ Comparison saved: {output_path}")
+
+
+def record_feature_statistics(train_data, test_data, save_path="result/stastic/compose"):
+    """
+    紀錄每個特徵的類別名稱、對應數值（train/test 計數）、中位數和平均數
+
+    參數:
+        train_data: DataFrame，訓練集數據
+        test_data: DataFrame，測試集數據
+        save_path: str，JSON 保存路徑
+
+    返回:
+        dict，特徵統計資訊
+    """
+    columns = [col for col in train_data.columns if col != 'student_id']
+    result = {}
+
+    for col in columns:
+        train_col = train_data[col].dropna()
+        test_col = test_data[col].dropna()
+
+        feature_info = {}
+
+        # 每個唯一值的 train/test 計數
+        train_counts = train_col.value_counts()
+        test_counts = test_col.value_counts()
+        all_values = sorted(set(train_counts.index) | set(test_counts.index))
+
+        for val in all_values:
+            key = str(val)
+            feature_info[key] = [
+                int(train_counts.get(val, 0)),
+                int(test_counts.get(val, 0))
+            ]
+
+        # 平均數和中位數
+        if pd.api.types.is_numeric_dtype(train_col):
+            feature_info["mean"] = [float(train_col.mean()), float(test_col.mean())]
+            feature_info["median"] = [float(train_col.median()), float(test_col.median())]
+        else:
+            feature_info["mean"] = None
+            feature_info["median"] = None
+
+        result[col] = feature_info
+
+    os.makedirs(save_path, exist_ok=True)
+    output_path = os.path.join(save_path, "feature_statistics.json")
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=4, ensure_ascii=False)
+
+    print(f"✅ Feature statistics saved to: {output_path}")
+    return result
