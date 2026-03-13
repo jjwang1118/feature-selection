@@ -1,98 +1,160 @@
 import json
 import pandas as pd
+import os
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+
+# Import your custom modules
+from util.feature_selectors import run_filter, run_wrapper, run_embedded
+from util.evaluation import evaluate_model, calculate_overlap
 
 def load_split_data(data_path):
     """
-    Loads the train/test splits, separates features and targets, 
-    and handles any lingering string/categorical columns.
+    Loads the pre-split train/test data from Wang's pipeline, 
+    separates features/targets, and handles categorical encoding.
     """
     split_path = f"{data_path}/split"
     
     train_df = pd.read_csv(f"{split_path}/train.csv")
     test_df = pd.read_csv(f"{split_path}/test.csv")
     
-    # Separate features (X) and target (y)
-    # Dropping 'student_id' because IDs shouldn't be used as predictive features
-    X_train = train_df.drop(columns=["passed", "student_id", "performance_category", "final_score"], errors='ignore')
-    y_train = train_df["passed"]
+    # Drop target and data-leakage columns (like final_score)
+    drop_cols = ['passed', 'student_id', 'performance_category', 'final_score']
     
-    X_test = test_df.drop(columns=["passed", "student_id"], errors='ignore')
-    y_test = test_df["passed"]
+    X_train = train_df.drop(columns=drop_cols, errors='ignore')
+    y_train = train_df['passed']
     
-    # Failsafe: One-hot encode any remaining text columns (like gender, ai_usage_purpose)
+    X_test = test_df.drop(columns=drop_cols, errors='ignore')
+    y_test = test_df['passed']
+    
+    # Safely convert text categories into numerical format (better than LabelEncoder)
     X_train = pd.get_dummies(X_train, drop_first=True)
     X_test = pd.get_dummies(X_test, drop_first=True)
     
-    # Align columns just in case the test set is missing a category present in the train set
+    # Align columns to ensure train and test sets have identical features
     X_train, X_test = X_train.align(X_test, join='left', axis=1, fill_value=0)
     
-    return X_train, y_train, X_test, y_test
+    return X_train, X_test, y_train, y_test
+
 
 if __name__ == "__main__":
-    print("This is the main entry point for the training script.")
-
-    # ---------------------------------------------------------
-    # Load settings from config.json
-    # ---------------------------------------------------------
+    print("Starting Training Pipeline...")
+    
+    # 1. Read the existing Config
     with open("config.json", "r", encoding="utf-8") as f:
         config = json.load(f)
-    
-    exp = config.get("exp_idx", 0)
+        
+    exp_idx = config.get("exp_idx", 0)
+    k_value = config.get("k", 7)
     data_path = config.get("data_path", "dataset")
-    k_folds = config.get("k", 7) # Ready for future experiments!
+    
+    # Fixed settings
+    SEED = 42
+    
+    # 2. Prepare Data (using the new split pipeline)
+    X_train, X_test, y_train, y_test = load_split_data(data_path)
+    print(f"Data shape: X_train {X_train.shape}, X_test {X_test.shape}")
 
-    # Load the data using the path from config
-    X_train, y_train, X_test, y_test = load_split_data(data_path)
+    # Create results directory
+    results_dir = f'results/exp{exp_idx}'
+    os.makedirs(results_dir, exist_ok=True)
 
-    if exp == 0:
-        print("\n" + "="*50)
-        print("🚀 Running Baseline (Experiment 0): Decision Tree")
-        print("="*50)
+    if exp_idx == 0:
+        print("\n--- Running Baseline (All Features) ---")
+        model = DecisionTreeClassifier(random_state=SEED)
+        model.fit(X_train, y_train)
         
-        # Initialize and train
-        dt = DecisionTreeClassifier(random_state=42)
-        dt.fit(X_train, y_train)
+        # Use your custom evaluation tool
+        metrics = evaluate_model(model, X_test, y_test)
+        print(f"Baseline Metrics: {metrics}")
         
-        # Predict and evaluate
-        y_pred = dt.predict(X_test)
-        
-        print(f"\n✅ Accuracy: {accuracy_score(y_test, y_pred):.4f}")
-        print("\n📊 Classification Report:\n")
-        print(classification_report(y_test, y_pred))
+        # Save results
+        output_file = f"{results_dir}/baseline_metrics.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(metrics, f, indent=4, ensure_ascii=False)
+            
+        print(f"✅ Baseline complete! Logged to {output_file}")
 
-    elif exp == 1:
-        print("\n" + "="*50)
-        print("🚀 Running Experiment 1: Model Comparison")
-        print("="*50)
+    elif exp_idx == 1:
+        print("\n--- Running Experiment 1 (Feature Selection Comparisons) ---")
         
-        # Define the three models we want to compare
-        models = {
-            "Decision Tree": DecisionTreeClassifier(random_state=42),
-            "Random Forest": RandomForestClassifier(random_state=42),
-            "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42)
+        # Step A: Wrapper
+        wrapper_features = run_wrapper(X_train, y_train)
+        n_wrapper = len(wrapper_features)
+        print(f"Wrapper selected {n_wrapper} features.")
+        
+        # Step B: Embedded
+        embedded_features = run_embedded(X_train, y_train)
+        n_embedded = len(embedded_features)
+        print(f"Embedded selected {n_embedded} features.")
+        
+        # Step C: Filter based on counts
+        filter_features_for_wrapper = run_filter(X_train, y_train, k=n_wrapper)
+        filter_features_for_embedded = run_filter(X_train, y_train, k=n_embedded)
+        
+        # === Matchup 1: Wrapper vs Filter ===
+        print(f"\n[Matchup 1: Wrapper vs Filter (N={n_wrapper})]")
+        
+        dt_wrap = DecisionTreeClassifier(random_state=SEED)
+        dt_wrap.fit(X_train[wrapper_features], y_train)
+        metrics_wrap = evaluate_model(dt_wrap, X_test[wrapper_features], y_test)
+        
+        dt_filt_1 = DecisionTreeClassifier(random_state=SEED)
+        dt_filt_1.fit(X_train[filter_features_for_wrapper], y_train)
+        metrics_filt_1 = evaluate_model(dt_filt_1, X_test[filter_features_for_wrapper], y_test)
+        
+        overlap_1 = calculate_overlap(wrapper_features, filter_features_for_wrapper)
+        print(f"Wrapper F1: {metrics_wrap['f1_score']:.4f} | Filter F1: {metrics_filt_1['f1_score']:.4f} | Overlap: {overlap_1:.2f}")
+
+        # === Matchup 2: Embedded vs Filter ===
+        print(f"\n[Matchup 2: Embedded vs Filter (N={n_embedded})]")
+        
+        dt_embed = DecisionTreeClassifier(random_state=SEED)
+        dt_embed.fit(X_train[embedded_features], y_train)
+        metrics_embed = evaluate_model(dt_embed, X_test[embedded_features], y_test)
+        
+        dt_filt_2 = DecisionTreeClassifier(random_state=SEED)
+        dt_filt_2.fit(X_train[filter_features_for_embedded], y_train)
+        metrics_filt_2 = evaluate_model(dt_filt_2, X_test[filter_features_for_embedded], y_test)
+        
+        overlap_2 = calculate_overlap(embedded_features, filter_features_for_embedded)
+        print(f"Embedded F1: {metrics_embed['f1_score']:.4f} | Filter F1: {metrics_filt_2['f1_score']:.4f} | Overlap: {overlap_2:.2f}")
+
+        # === Package and Save Results ===
+        exp1_results = {
+            "matchup_1_wrapper_vs_filter": {
+                "n_features": n_wrapper,
+                "feature_overlap_ratio": overlap_1,
+                "wrapper": {
+                    "selected_features": wrapper_features,
+                    "metrics": metrics_wrap
+                },
+                "filter": {
+                    "selected_features": filter_features_for_wrapper,
+                    "metrics": metrics_filt_1
+                }
+            },
+            "matchup_2_embedded_vs_filter": {
+                "n_features": n_embedded,
+                "feature_overlap_ratio": overlap_2,
+                "embedded": {
+                    "selected_features": embedded_features,
+                    "metrics": metrics_embed
+                },
+                "filter": {
+                    "selected_features": filter_features_for_embedded,
+                    "metrics": metrics_filt_2
+                }
+            }
         }
         
-        results = []
+        output_file = f"{results_dir}/exp1_results.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(exp1_results, f, indent=4, ensure_ascii=False)
+            
+        print(f"\n✅ Experiment 1 complete! Results neatly logged to {output_file}")
 
-        # Loop through, train, and test each model
-        for name, model in models.items():
-            print(f"Training {name}...")
-            model.fit(X_train, y_train)
-            y_pred = model.predict(X_test)
-            
-            acc = accuracy_score(y_test, y_pred)
-            results.append({"Model": name, "Accuracy": acc})
-            
-        print("\n🏆 Final Comparison:")
-        results_df = pd.DataFrame(results).sort_values(by="Accuracy", ascending=False)
-        print(results_df.to_string(index=False))
-    
-    elif exp == 2:
+    elif exp_idx == 2:
         pass
 
-    elif exp == 3:
+    elif exp_idx == 3:
         pass
