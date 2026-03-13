@@ -1,0 +1,82 @@
+{
+    "age": {
+        "mean": 18.96725,
+        "median": 19.0
+    },
+    "study_hours_per_day": {
+        "mean": 3.2869375,
+        "median": 3.3
+    },
+    "uses_ai": {
+        "mean": 0.641,
+        "median": 1.0
+    },
+    "ai_usage_time_minutes": {
+        "mean": 88.989875,
+        "median": 89.0
+    },
+    "ai_dependency_score": {
+        "mean": 5.515125,
+        "median": 6.0
+    },
+    "ai_generated_content_percentage": {
+        "mean": 50.0575,
+        "median": 50.0
+    },
+    "ai_prompts_per_week": {
+        "mean": 59.3595,
+        "median": 59.0
+    },
+    "ai_ethics_score": {
+        "mean": 5.472375,
+        "median": 6.0
+    },
+    "last_exam_score": {
+        "mean": 59.50125,
+        "median": 59.0
+    },
+    "assignment_scores_avg": {
+        "mean": 65.1084,
+        "median": 65.1
+    },
+    "attendance_percentage": {
+        "mean": 69.85211249999999,
+        "median": 70.0
+    },
+    "concept_understanding_score": {
+        "mean": 5.48475,
+        "median": 5.0
+    },
+    "study_consistency_index": {
+        "mean": 5.516450000000001,
+        "median": 5.5
+    },
+    "improvement_rate": {
+        "mean": 10.127325,
+        "median": 10.149999999999999
+    },
+    "sleep_hours": {
+        "mean": 6.465025,
+        "median": 6.4
+    },
+    "social_media_hours": {
+        "mean": 3.0105999999999997,
+        "median": 3.0
+    },
+    "tutoring_hours": {
+        "mean": 2.5233874999999997,
+        "median": 2.5
+    },
+    "class_participation_score": {
+        "mean": 5.463375,
+        "median": 5.0
+    },
+    "final_score": {
+        "mean": 56.8119875,
+        "median": 56.9
+    },
+    "passed": {
+        "mean": 0.88925,
+        "median": 1.0
+    }
+}

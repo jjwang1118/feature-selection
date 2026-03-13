@@ -38,6 +38,22 @@
 - `pandas`
 - `scikit-learn` **主要訓練用**
 - `matplotlib`
+- `json`
+- `os`
+- `pathlib`
+
+## 🐍 環境建立
+```bash
+# 建立 conda 環境
+conda create -n feature_selection python=3.13 -y
+
+# 啟動環境
+conda activate feature_selection
+
+# 安裝套件（不含 torch 與 scikit-learn）
+pip install -r requirements.txt
+```
+
 
 ## 👥 工作分配
 - 資料處理、資料分析、模型訓練 *1【baseline】 (wang)
