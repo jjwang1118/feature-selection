@@ -1,0 +1,60 @@
+{
+    "k_value": 5,
+    "filter": {
+        "selected_features": [
+            "ai_generated_content_percentage",
+            "last_exam_score",
+            "assignment_scores_avg",
+            "concept_understanding_score",
+            "Copilot_usage"
+        ],
+        "metrics": {
+            "accuracy": 0.913125,
+            "precision": 0.9508426966292135,
+            "recall": 0.9515108924806747,
+            "f1_score": 0.9511766772040745,
+            "depth_nodes": {
+                "max_depth": 23,
+                "n_leaves": 486
+            }
+        }
+    },
+    "wrapper_random_forest": {
+        "selected_features": [
+            "ai_generated_content_percentage",
+            "last_exam_score",
+            "assignment_scores_avg",
+            "attendance_percentage",
+            "concept_understanding_score"
+        ],
+        "metrics": {
+            "accuracy": 0.920625,
+            "precision": 0.9569816643159379,
+            "recall": 0.9536191145467322,
+            "f1_score": 0.9552974304822246,
+            "depth_nodes": {
+                "max_depth": 21,
+                "n_leaves": 437
+            }
+        }
+    },
+    "embedded_gradient_boosting": {
+        "selected_features": [
+            "social_media_hours",
+            "ai_generated_content_percentage",
+            "concept_understanding_score",
+            "assignment_scores_avg",
+            "last_exam_score"
+        ],
+        "metrics": {
+            "accuracy": 0.915,
+            "precision": 0.9528501055594651,
+            "recall": 0.9515108924806747,
+            "f1_score": 0.9521800281293952,
+            "depth_nodes": {
+                "max_depth": 21,
+                "n_leaves": 460
+            }
+        }
+    }
+}

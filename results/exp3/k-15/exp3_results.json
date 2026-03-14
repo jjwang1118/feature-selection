@@ -1,0 +1,90 @@
+{
+    "k_value": 15,
+    "filter": {
+        "selected_features": [
+            "age",
+            "uses_ai",
+            "ai_generated_content_percentage",
+            "ai_ethics_score",
+            "last_exam_score",
+            "assignment_scores_avg",
+            "concept_understanding_score",
+            "social_media_hours",
+            "tutoring_hours",
+            "Claude_usage",
+            "Copilot_usage",
+            "Gemini_usage",
+            "gender_Male",
+            "ai_usage_purpose_Doubt Solving",
+            "ai_usage_purpose_Exam Prep"
+        ],
+        "metrics": {
+            "accuracy": 0.90875,
+            "precision": 0.9486999297259311,
+            "recall": 0.9486999297259311,
+            "f1_score": 0.9486999297259311,
+            "depth_nodes": {
+                "max_depth": 21,
+                "n_leaves": 398
+            }
+        }
+    },
+    "wrapper_random_forest": {
+        "selected_features": [
+            "age",
+            "study_hours_per_day",
+            "ai_usage_time_minutes",
+            "ai_generated_content_percentage",
+            "ai_prompts_per_week",
+            "ai_ethics_score",
+            "last_exam_score",
+            "assignment_scores_avg",
+            "attendance_percentage",
+            "concept_understanding_score",
+            "study_consistency_index",
+            "improvement_rate",
+            "sleep_hours",
+            "social_media_hours",
+            "tutoring_hours"
+        ],
+        "metrics": {
+            "accuracy": 0.909375,
+            "precision": 0.9493670886075949,
+            "recall": 0.9486999297259311,
+            "f1_score": 0.9490333919156415,
+            "depth_nodes": {
+                "max_depth": 19,
+                "n_leaves": 332
+            }
+        }
+    },
+    "embedded_gradient_boosting": {
+        "selected_features": [
+            "age",
+            "study_consistency_index",
+            "ai_ethics_score",
+            "sleep_hours",
+            "ai_usage_time_minutes",
+            "study_hours_per_day",
+            "ai_prompts_per_week",
+            "tutoring_hours",
+            "attendance_percentage",
+            "improvement_rate",
+            "social_media_hours",
+            "ai_generated_content_percentage",
+            "concept_understanding_score",
+            "assignment_scores_avg",
+            "last_exam_score"
+        ],
+        "metrics": {
+            "accuracy": 0.9075,
+            "precision": 0.9467414155571128,
+            "recall": 0.949402670414617,
+            "f1_score": 0.9480701754385965,
+            "depth_nodes": {
+                "max_depth": 20,
+                "n_leaves": 338
+            }
+        }
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "k_value": 10,
+    "filter": {
+        "selected_features": [
+            "ai_generated_content_percentage",
+            "ai_ethics_score",
+            "last_exam_score",
+            "assignment_scores_avg",
+            "concept_understanding_score",
+            "social_media_hours",
+            "Copilot_usage",
+            "Gemini_usage",
+            "ai_usage_purpose_Doubt Solving",
+            "ai_usage_purpose_Exam Prep"
+        ],
+        "metrics": {
+            "accuracy": 0.909375,
+            "precision": 0.9487359550561798,
+            "recall": 0.949402670414617,
+            "f1_score": 0.9490691956445381,
+            "depth_nodes": {
+                "max_depth": 20,
+                "n_leaves": 433
+            }
+        }
+    },
+    "wrapper_random_forest": {
+        "selected_features": [
+            "ai_usage_time_minutes",
+            "ai_generated_content_percentage",
+            "ai_prompts_per_week",
+            "last_exam_score",
+            "assignment_scores_avg",
+            "attendance_percentage",
+            "concept_understanding_score",
+            "study_consistency_index",
+            "improvement_rate",
+            "tutoring_hours"
+        ],
+        "metrics": {
+            "accuracy": 0.91625,
+            "precision": 0.9541930937279774,
+            "recall": 0.9515108924806747,
+            "f1_score": 0.9528501055594651,
+            "depth_nodes": {
+                "max_depth": 18,
+                "n_leaves": 351
+            }
+        }
+    },
+    "embedded_gradient_boosting": {
+        "selected_features": [
+            "study_hours_per_day",
+            "ai_prompts_per_week",
+            "tutoring_hours",
+            "attendance_percentage",
+            "improvement_rate",
+            "social_media_hours",
+            "ai_generated_content_percentage",
+            "concept_understanding_score",
+            "assignment_scores_avg",
+            "last_exam_score"
+        ],
+        "metrics": {
+            "accuracy": 0.91375,
+            "precision": 0.9508771929824561,
+            "recall": 0.9522136331693605,
+            "f1_score": 0.9515449438202247,
+            "depth_nodes": {
+                "max_depth": 20,
+                "n_leaves": 362
+            }
+        }
+    }
+}

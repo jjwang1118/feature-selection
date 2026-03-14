@@ -1,0 +1,53 @@
+{
+    "filter": {
+        "last_exam_score": 0.41125997801671244,
+        "assignment_scores_avg": 0.21333729000344356,
+        "concept_understanding_score": 0.1625751151140842,
+        "ai_generated_content_percentage": 0.05103956220706941,
+        "tutoring_hours": 0.04412727415100202,
+        "social_media_hours": 0.03276592749928828,
+        "age": 0.024806517408424444,
+        "ai_ethics_score": 0.02176651646280305,
+        "Gemini_usage": 0.011040887557998657,
+        "uses_ai": 0.006787498362614812,
+        "ai_usage_purpose_Exam Prep": 0.005801237605864711,
+        "Claude_usage": 0.005772358959579038,
+        "ai_usage_purpose_Doubt Solving": 0.0036269269120986643,
+        "gender_Male": 0.0035402405255234044,
+        "Copilot_usage": 0.0017526692134932716
+    },
+    "wrapper_random_forest": {
+        "last_exam_score": 0.3855253337888554,
+        "assignment_scores_avg": 0.19381742497005672,
+        "concept_understanding_score": 0.1542691609759278,
+        "improvement_rate": 0.039475817885725004,
+        "ai_prompts_per_week": 0.033511200576796456,
+        "ai_generated_content_percentage": 0.031326169128895305,
+        "social_media_hours": 0.02497146830405164,
+        "tutoring_hours": 0.022973884648902983,
+        "ai_usage_time_minutes": 0.022429815867713445,
+        "study_hours_per_day": 0.022185661481788733,
+        "study_consistency_index": 0.02051289982124686,
+        "sleep_hours": 0.01418658619129035,
+        "ai_ethics_score": 0.012183873423866395,
+        "attendance_percentage": 0.011975456342396683,
+        "age": 0.010655246592486239
+    },
+    "embedded_gradient_boosting": {
+        "last_exam_score": 0.38416314808796087,
+        "assignment_scores_avg": 0.19794982998578278,
+        "concept_understanding_score": 0.1548318721200985,
+        "ai_prompts_per_week": 0.03405812550705485,
+        "ai_generated_content_percentage": 0.03148118955648778,
+        "improvement_rate": 0.03089124855494926,
+        "social_media_hours": 0.02562611957028813,
+        "study_hours_per_day": 0.024829602260235856,
+        "ai_usage_time_minutes": 0.023686662253345935,
+        "tutoring_hours": 0.02242838916904739,
+        "study_consistency_index": 0.02112002754650624,
+        "sleep_hours": 0.015100579015556531,
+        "ai_ethics_score": 0.013598994821862763,
+        "age": 0.011970948906511836,
+        "attendance_percentage": 0.008263262644311365
+    }
+}

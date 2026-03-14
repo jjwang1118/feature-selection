@@ -436,13 +436,14 @@ if __name__ == "__main__":
         
     elif exp_idx == 3:
         print(f"\n--- Running Experiment 3 (Transferability Phase, K={k_value}) ---")
-        model_dir = f"model/exp_{exp_idx}"
+        model_dir = f"model/exp_{exp_idx}/k-{k_value}"
         os.makedirs(model_dir, exist_ok=True)
         
         # 為每個 k 值創建專屬子目錄來存放圖片和結果
         k_results_dir = f"{results_dir}/k-{k_value}"
         os.makedirs(k_results_dir, exist_ok=True)
         print(f"📁 Results will be saved to: {k_results_dir}")
+        print(f"📁 Models will be saved to: {model_dir}")
         
         # 匯入其他的機器學習模型來「幫忙挑選特徵」
         from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
