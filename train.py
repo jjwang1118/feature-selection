@@ -49,9 +49,8 @@ if __name__ == "__main__":
     exp_idx = config.get("exp_idx", 0)
     k_value = config.get("k", 7)
     data_path = config.get("data_path", "dataset")
-    
     # Fixed settings
-    SEED = 42
+    SEED=config.get("seed", 42)
     
     # 2. Prepare Data (load pre-split data)
     split_path = f"{data_path}/split"
@@ -75,7 +74,6 @@ if __name__ == "__main__":
         model_name=f"exp_{exp_idx if exp_idx != 0 else 'baseline'}.pkl"
         import os
         os.makedirs(model_file, exist_ok=True) # Creates the folder if it doesn't exist
-        joblib.dump(clf, f"{model_file}/{model_name}")
         joblib.dump(clf, f"{model_file}/{model_name}")
         print(f"✅ Baseline model saved to {model_file}/{model_name}")
         tv.visualize_decision_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'])

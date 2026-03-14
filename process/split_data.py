@@ -9,6 +9,10 @@ import numpy as np
 
 
 def split_data(save_path, split_ratio=0.8):
+    with open("config.json", "r", encoding="utf-8") as f:
+        config = json.load(f)
+
+    seed = config.get("seed", 42)
     """
     分割數據為訓練集和測試集，並保存到文件
     
@@ -27,7 +31,7 @@ def split_data(save_path, split_ratio=0.8):
         feature_cols,
         target_col,
         test_size=1-split_ratio,
-        random_state=42,
+        random_state=seed,
         stratify=target_col
     )
     
@@ -46,7 +50,7 @@ def split_data(save_path, split_ratio=0.8):
         "train_size": len(train_data),
         "test_size": len(test_data),
         "split_ratio": split_ratio,
-        "random_state": 42
+        "random_state": seed
     }
     
     with open(save_dir / "split_info.json", "w", encoding="utf-8") as f:
