@@ -10,7 +10,11 @@
             "accuracy": 0.913125,
             "precision": 0.9579172610556348,
             "recall": 0.94378074490513,
-            "f1_score": 0.9507964601769912
+            "f1_score": 0.9507964601769912,
+            "depth_nodes": {
+                "max_depth": 26,
+                "n_leaves": 605
+            }
         }
     },
     "wrapper": {
@@ -23,7 +27,11 @@
             "accuracy": 0.913125,
             "precision": 0.9579172610556348,
             "recall": 0.94378074490513,
-            "f1_score": 0.9507964601769912
+            "f1_score": 0.9507964601769912,
+            "depth_nodes": {
+                "max_depth": 26,
+                "n_leaves": 605
+            }
         }
     },
     "embedded": {
@@ -36,7 +44,11 @@
             "accuracy": 0.913125,
             "precision": 0.9579172610556348,
             "recall": 0.94378074490513,
-            "f1_score": 0.9507964601769912
+            "f1_score": 0.9507964601769912,
+            "depth_nodes": {
+                "max_depth": 26,
+                "n_leaves": 606
+            }
         }
     }
 }

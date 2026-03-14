@@ -128,18 +128,49 @@ if __name__ == "__main__":
         # === Matchup 1: Wrapper vs Filter ===
         print(f"\n[Matchup 1: Wrapper vs Filter (N={n_wrapper})]")
         
-        dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_wrap.fit(X_train[wrapper_features], y_train)
+        # Train or load Wrapper model
+        if os.path.exists(f"{model_dir}/wrapper_model.pkl"):
+            print("✅ Wrapper model already exists. Loading...")
+            dt_wrap = joblib.load(f"{model_dir}/wrapper_model.pkl")
+        else:
+            dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_wrap.fit(X_train[wrapper_features], y_train)
+            joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
+            print("✅ Wrapper model trained and saved.")
+        
         metrics_wrap = evaluate_model(dt_wrap, X_test[wrapper_features], y_test)
         
-        joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for wrapper
+        metrics_wrap['depth_nodes'] = {
+            'max_depth': int(dt_wrap.get_depth()),
+            'n_leaves': int(dt_wrap.get_n_leaves())
+        }
         
-        dt_filt_1 = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_filt_1.fit(X_train[filter_features_for_wrapper], y_train)
+        tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree_matplotlib.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=wrapper_features)
+        
+        # Train or load Filter model (matchup 1)
+        if os.path.exists(f"{model_dir}/filter_model_wrapper.pkl"):
+            print("✅ Filter model (matchup 1) already exists. Loading...")
+            dt_filt_1 = joblib.load(f"{model_dir}/filter_model_wrapper.pkl")
+        else:
+            dt_filt_1 = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_filt_1.fit(X_train[filter_features_for_wrapper], y_train)
+            joblib.dump(dt_filt_1, f"{model_dir}/filter_model_wrapper.pkl")
+            print("✅ Filter model (matchup 1) trained and saved.")
+        
         metrics_filt_1 = evaluate_model(dt_filt_1, X_test[filter_features_for_wrapper], y_test)
-        joblib.dump(dt_filt_1, f"{model_dir}/filter_model_wrapper.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+        
+        # Add depth and nodes info for filter (matchup 1)
+        metrics_filt_1['depth_nodes'] = {
+            'max_depth': int(dt_filt_1.get_depth()),
+            'n_leaves': int(dt_filt_1.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper_matplotlib.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.txt", feature_names=filter_features_for_wrapper)
         
         overlap_1 = calculate_overlap(wrapper_features, filter_features_for_wrapper)
         print(f"Wrapper F1: {metrics_wrap['f1_score']:.4f} | Filter F1: {metrics_filt_1['f1_score']:.4f} | Overlap: {overlap_1:.2f}")
@@ -147,21 +178,50 @@ if __name__ == "__main__":
         # === Matchup 2: Embedded vs Filter ===
         print(f"\n[Matchup 2: Embedded vs Filter (N={n_embedded})]")
         
-        dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_embed.fit(X_train[embedded_features], y_train)
+        # Train or load Embedded model
+        if os.path.exists(f"{model_dir}/embedded_model.pkl"):
+            print("✅ Embedded model already exists. Loading...")
+            dt_embed = joblib.load(f"{model_dir}/embedded_model.pkl")
+        else:
+            dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_embed.fit(X_train[embedded_features], y_train)
+            joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
+            print("✅ Embedded model trained and saved.")
+        
         metrics_embed = evaluate_model(dt_embed, X_test[embedded_features], y_test)
         
-        joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for embedded
+        metrics_embed['depth_nodes'] = {
+            'max_depth': int(dt_embed.get_depth()),
+            'n_leaves': int(dt_embed.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree_matplotlib.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=embedded_features)
         
         
-        dt_filt_2 = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_filt_2.fit(X_train[filter_features_for_embedded], y_train)
+        # Train or load Filter model (matchup 2)
+        if os.path.exists(f"{model_dir}/filter_model_embedded.pkl"):
+            print("✅ Filter model (matchup 2) already exists. Loading...")
+            dt_filt_2 = joblib.load(f"{model_dir}/filter_model_embedded.pkl")
+        else:
+            dt_filt_2 = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_filt_2.fit(X_train[filter_features_for_embedded], y_train)
+            joblib.dump(dt_filt_2, f"{model_dir}/filter_model_embedded.pkl")
+            print("✅ Filter model (matchup 2) trained and saved.")
+        
         metrics_filt_2 = evaluate_model(dt_filt_2, X_test[filter_features_for_embedded], y_test)
         
-        joblib.dump(dt_filt_2, f"{model_dir}/filter_model_embedded.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for filter (matchup 2)
+        metrics_filt_2['depth_nodes'] = {
+            'max_depth': int(dt_filt_2.get_depth()),
+            'n_leaves': int(dt_filt_2.get_n_leaves())
+        }
         
+        tv.visualize_decision_tree(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded_matplotlib.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.txt", feature_names=filter_features_for_embedded)
         
         overlap_2 = calculate_overlap(embedded_features, filter_features_for_embedded)
         print(f"Embedded F1: {metrics_embed['f1_score']:.4f} | Filter F1: {metrics_filt_2['f1_score']:.4f} | Overlap: {overlap_2:.2f}")
@@ -197,7 +257,50 @@ if __name__ == "__main__":
         output_file = f"{results_dir}/exp1_results.json"
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(exp1_results, f, indent=4, ensure_ascii=False)
-            
+        
+        # Save feature importance for all models in exp1
+        feature_importance_exp1 = {
+            "matchup_1_wrapper": {},
+            "matchup_1_filter": {},
+            "matchup_2_embedded": {},
+            "matchup_2_filter": {}
+        }
+        
+        # Wrapper importance
+        for feature, value in zip(wrapper_features, dt_wrap.feature_importances_.tolist()):
+            feature_importance_exp1["matchup_1_wrapper"][feature] = value
+        feature_importance_exp1["matchup_1_wrapper"] = dict(sorted(feature_importance_exp1["matchup_1_wrapper"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Filter (matchup 1) importance
+        for feature, value in zip(filter_features_for_wrapper, dt_filt_1.feature_importances_.tolist()):
+            feature_importance_exp1["matchup_1_filter"][feature] = value
+        feature_importance_exp1["matchup_1_filter"] = dict(sorted(feature_importance_exp1["matchup_1_filter"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Embedded importance
+        for feature, value in zip(embedded_features, dt_embed.feature_importances_.tolist()):
+            feature_importance_exp1["matchup_2_embedded"][feature] = value
+        feature_importance_exp1["matchup_2_embedded"] = dict(sorted(feature_importance_exp1["matchup_2_embedded"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Filter (matchup 2) importance
+        for feature, value in zip(filter_features_for_embedded, dt_filt_2.feature_importances_.tolist()):
+            feature_importance_exp1["matchup_2_filter"][feature] = value
+        feature_importance_exp1["matchup_2_filter"] = dict(sorted(feature_importance_exp1["matchup_2_filter"].items(), key=lambda item: item[1], reverse=True))
+        
+        with open(f"{results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
+            json.dump(feature_importance_exp1, f, indent=4, ensure_ascii=False)        
+        # Save jaccard similarity for exp1
+        jaccard_exp1 = {
+            "matchup_1_wrapper_vs_filter": {
+                "n_features": n_wrapper,
+                "jaccard_similarity": calculate_overlap(wrapper_features, filter_features_for_wrapper)
+            },
+            "matchup_2_embedded_vs_filter": {
+                "n_features": n_embedded,
+                "jaccard_similarity": calculate_overlap(embedded_features, filter_features_for_embedded)
+            }
+        }
+        with open(f"{results_dir}/jaccard_similarity.json", "w", encoding="utf-8") as f:
+            json.dump(jaccard_exp1, f, indent=4, ensure_ascii=False)            
         print(f"\n✅ Experiment 1 complete! Results neatly logged to {output_file}")
 
     elif exp_idx == 2:
@@ -221,28 +324,70 @@ if __name__ == "__main__":
         # === 訓練與評估三種模型 ===
         
         # 1. Filter Model
-        dt_filt = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_filt.fit(X_train[features_filter], y_train)
+        if os.path.exists(f"{model_dir}/filter_model.pkl"):
+            print("✅ Filter model already exists. Loading...")
+            dt_filt = joblib.load(f"{model_dir}/filter_model.pkl")
+        else:
+            dt_filt = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_filt.fit(X_train[features_filter], y_train)
+            joblib.dump(dt_filt, f"{model_dir}/filter_model.pkl")
+            print("✅ Filter model trained and saved.")
+        
         metrics_filt = evaluate_model(dt_filt, X_test[features_filter], y_test)
         
-        joblib.dump(dt_filt, f"{model_dir}/filter_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for filter
+        metrics_filt['depth_nodes'] = {
+            'max_depth': int(dt_filt.get_depth()),
+            'n_leaves': int(dt_filt.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree_matplotlib.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_filt, save_path=f"{results_dir}/filter_tree.txt", feature_names=features_filter)
 
-        # 2. Wrapper Model
-        dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_wrap.fit(X_train[features_wrapper], y_train)
+        # 2. Wrapper Model (exp2)
+        if os.path.exists(f"{model_dir}/wrapper_model.pkl"):
+            print("✅ Wrapper model already exists. Loading...")
+            dt_wrap = joblib.load(f"{model_dir}/wrapper_model.pkl")
+        else:
+            dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_wrap.fit(X_train[features_wrapper], y_train)
+            joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
+            print("✅ Wrapper model trained and saved.")
+        
         metrics_wrap = evaluate_model(dt_wrap, X_test[features_wrapper], y_test)
         
-        joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for wrapper
+        metrics_wrap['depth_nodes'] = {
+            'max_depth': int(dt_wrap.get_depth()),
+            'n_leaves': int(dt_wrap.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree_matplotlib.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=features_wrapper)
 
-        # 3. Embedded Model
-        dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_embed.fit(X_train[features_embedded], y_train)
+        # 3. Embedded Model (exp2)
+        if os.path.exists(f"{model_dir}/embedded_model.pkl"):
+            print("✅ Embedded model already exists. Loading...")
+            dt_embed = joblib.load(f"{model_dir}/embedded_model.pkl")
+        else:
+            dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_embed.fit(X_train[features_embedded], y_train)
+            joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
+            print("✅ Embedded model trained and saved.")
+        
         metrics_embed = evaluate_model(dt_embed, X_test[features_embedded], y_test)
         
-        joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for embedded
+        metrics_embed['depth_nodes'] = {
+            'max_depth': int(dt_embed.get_depth()),
+            'n_leaves': int(dt_embed.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree_matplotlib.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=features_embedded)
 
         # 列印結果比較
         print(f"\n[Bottleneck Results (N={min_n})]")
@@ -270,7 +415,39 @@ if __name__ == "__main__":
         output_file = f"{results_dir}/exp2_results.json"
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(exp2_results, f, indent=4, ensure_ascii=False)
-            
+        
+        # Save feature importance for all models in exp2
+        feature_importance_exp2 = {
+            "filter": {},
+            "wrapper": {},
+            "embedded": {}
+        }
+        
+        # Filter importance
+        for feature, value in zip(features_filter, dt_filt.feature_importances_.tolist()):
+            feature_importance_exp2["filter"][feature] = value
+        feature_importance_exp2["filter"] = dict(sorted(feature_importance_exp2["filter"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Wrapper importance
+        for feature, value in zip(features_wrapper, dt_wrap.feature_importances_.tolist()):
+            feature_importance_exp2["wrapper"][feature] = value
+        feature_importance_exp2["wrapper"] = dict(sorted(feature_importance_exp2["wrapper"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Embedded importance
+        for feature, value in zip(features_embedded, dt_embed.feature_importances_.tolist()):
+            feature_importance_exp2["embedded"][feature] = value
+        feature_importance_exp2["embedded"] = dict(sorted(feature_importance_exp2["embedded"].items(), key=lambda item: item[1], reverse=True))
+        
+        with open(f"{results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
+            json.dump(feature_importance_exp2, f, indent=4, ensure_ascii=False)        
+        # Save jaccard similarity for exp2
+        jaccard_exp2 = {
+            "filter_vs_wrapper": calculate_overlap(features_filter, features_wrapper),
+            "filter_vs_embedded": calculate_overlap(features_filter, features_embedded),
+            "wrapper_vs_embedded": calculate_overlap(features_wrapper, features_embedded)
+        }
+        with open(f"{results_dir}/jaccard_similarity.json", "w", encoding="utf-8") as f:
+            json.dump(jaccard_exp2, f, indent=4, ensure_ascii=False)            
         print(f"\n✅ Experiment 2 complete! Results logged to {output_file}")
         
     elif exp_idx == 3:
@@ -299,28 +476,70 @@ if __name__ == "__main__":
         # === 訓練與評估三種模型 (注意：這裡還是要用 Base Decision Tree 來當裁判！) ===
         
         # 1. Filter Model
-        dt_filt = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_filt.fit(X_train[features_filter], y_train)
+        if os.path.exists(f"{model_dir}/filter_model.pkl"):
+            print("✅ Filter model already exists. Loading...")
+            dt_filt = joblib.load(f"{model_dir}/filter_model.pkl")
+        else:
+            dt_filt = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_filt.fit(X_train[features_filter], y_train)
+            joblib.dump(dt_filt, f"{model_dir}/filter_model.pkl")
+            print("✅ Filter model trained and saved.")
+        
         metrics_filt = evaluate_model(dt_filt, X_test[features_filter], y_test)
         
-        joblib.dump(dt_filt, f"{model_dir}/filter_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for filter
+        metrics_filt['depth_nodes'] = {
+            'max_depth': int(dt_filt.get_depth()),
+            'n_leaves': int(dt_filt.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree_matplotlib.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_filt, save_path=f"{results_dir}/filter_tree.txt", feature_names=features_filter)
 
         # 2. Wrapper Model
-        dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_wrap.fit(X_train[features_wrapper], y_train)
+        if os.path.exists(f"{model_dir}/wrapper_model.pkl"):
+            print("✅ Wrapper model already exists. Loading...")
+            dt_wrap = joblib.load(f"{model_dir}/wrapper_model.pkl")
+        else:
+            dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_wrap.fit(X_train[features_wrapper], y_train)
+            joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
+            print("✅ Wrapper model trained and saved.")
+        
         metrics_wrap = evaluate_model(dt_wrap, X_test[features_wrapper], y_test)
         
-        joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for wrapper
+        metrics_wrap['depth_nodes'] = {
+            'max_depth': int(dt_wrap.get_depth()),
+            'n_leaves': int(dt_wrap.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree_matplotlib.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=features_wrapper)
 
         # 3. Embedded Model
-        dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
-        dt_embed.fit(X_train[features_embedded], y_train)
+        if os.path.exists(f"{model_dir}/embedded_model.pkl"):
+            print("✅ Embedded model already exists. Loading...")
+            dt_embed = joblib.load(f"{model_dir}/embedded_model.pkl")
+        else:
+            dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+            dt_embed.fit(X_train[features_embedded], y_train)
+            joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
+            print("✅ Embedded model trained and saved.")
+        
         metrics_embed = evaluate_model(dt_embed, X_test[features_embedded], y_test)
         
-        joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
-        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        # Add depth and nodes info for embedded
+        metrics_embed['depth_nodes'] = {
+            'max_depth': int(dt_embed.get_depth()),
+            'n_leaves': int(dt_embed.get_n_leaves())
+        }
+        
+        tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree_matplotlib.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=features_embedded)
 
         # 列印結果比較
         print(f"\n[Transferability Results (N={k_value})]")
@@ -348,5 +567,50 @@ if __name__ == "__main__":
         output_file = f"{results_dir}/exp3_results.json"
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(exp3_results, f, indent=4, ensure_ascii=False)
-            
+        
+        # Save feature importance for all models in exp3
+        feature_importance_exp3 = {
+            "filter": {},
+            "wrapper_random_forest": {},
+            "embedded_gradient_boosting": {}
+        }
+        
+        # Filter importance
+        for feature, value in zip(features_filter, dt_filt.feature_importances_.tolist()):
+            feature_importance_exp3["filter"][feature] = value
+        feature_importance_exp3["filter"] = dict(sorted(feature_importance_exp3["filter"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Wrapper importance
+        for feature, value in zip(features_wrapper, dt_wrap.feature_importances_.tolist()):
+            feature_importance_exp3["wrapper_random_forest"][feature] = value
+        feature_importance_exp3["wrapper_random_forest"] = dict(sorted(feature_importance_exp3["wrapper_random_forest"].items(), key=lambda item: item[1], reverse=True))
+        
+        # Embedded importance
+        for feature, value in zip(features_embedded, dt_embed.feature_importances_.tolist()):
+            feature_importance_exp3["embedded_gradient_boosting"][feature] = value
+        feature_importance_exp3["embedded_gradient_boosting"] = dict(sorted(feature_importance_exp3["embedded_gradient_boosting"].items(), key=lambda item: item[1], reverse=True))
+        
+        with open(f"{results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
+            json.dump(feature_importance_exp3, f, indent=4, ensure_ascii=False)
+        
+        # Save jaccard similarity for exp3 (accumulative by k value)
+        jaccard_file = f"{results_dir}/jaccard_similarity.json"
+        
+        # Load existing jaccard similarity data if exists
+        if os.path.exists(jaccard_file):
+            with open(jaccard_file, "r", encoding="utf-8") as f:
+                jaccard_all = json.load(f)
+        else:
+            jaccard_all = {}
+        
+        # Add current k value results
+        jaccard_all[f"k_{k_value}"] = {
+            "filter_vs_wrapper_random_forest": calculate_overlap(features_filter, features_wrapper),
+            "filter_vs_embedded_gradient_boosting": calculate_overlap(features_filter, features_embedded),
+            "wrapper_random_forest_vs_embedded_gradient_boosting": calculate_overlap(features_wrapper, features_embedded)
+        }
+        
+        with open(jaccard_file, "w", encoding="utf-8") as f:
+            json.dump(jaccard_all, f, indent=4, ensure_ascii=False)
+        
         print(f"\n✅ Experiment 3 complete! Results logged to {output_file}")

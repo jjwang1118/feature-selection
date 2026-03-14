@@ -14,7 +14,11 @@
             "accuracy": 0.914375,
             "precision": 0.9496503496503497,
             "recall": 0.9543218552354181,
-            "f1_score": 0.9519803715387312
+            "f1_score": 0.9519803715387312,
+            "depth_nodes": {
+                "max_depth": 21,
+                "n_leaves": 445
+            }
         }
     },
     "wrapper_random_forest": {
@@ -31,7 +35,11 @@
             "accuracy": 0.91375,
             "precision": 0.9515108924806747,
             "recall": 0.9515108924806747,
-            "f1_score": 0.9515108924806747
+            "f1_score": 0.9515108924806747,
+            "depth_nodes": {
+                "max_depth": 18,
+                "n_leaves": 401
+            }
         }
     },
     "embedded_gradient_boosting": {
@@ -48,7 +56,11 @@
             "accuracy": 0.905,
             "precision": 0.9465917076598735,
             "recall": 0.9465917076598735,
-            "f1_score": 0.9465917076598735
+            "f1_score": 0.9465917076598735,
+            "depth_nodes": {
+                "max_depth": 20,
+                "n_leaves": 394
+            }
         }
     }
 }

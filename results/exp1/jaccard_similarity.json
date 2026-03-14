@@ -1,0 +1,10 @@
+{
+    "matchup_1_wrapper_vs_filter": {
+        "n_features": 3,
+        "jaccard_similarity": 1.0
+    },
+    "matchup_2_embedded_vs_filter": {
+        "n_features": 4,
+        "jaccard_similarity": 1.0
+    }
+}

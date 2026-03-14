@@ -1,0 +1,29 @@
+{
+    "filter": {
+        "last_exam_score": 0.4248199653028795,
+        "assignment_scores_avg": 0.2395570762817029,
+        "concept_understanding_score": 0.16919033076805112,
+        "ai_generated_content_percentage": 0.08221800876113203,
+        "social_media_hours": 0.06549633513255675,
+        "ai_usage_purpose_Exam Prep": 0.010618394276538521,
+        "Copilot_usage": 0.008099889477139213
+    },
+    "wrapper_random_forest": {
+        "last_exam_score": 0.40702995643728024,
+        "assignment_scores_avg": 0.22503814860543364,
+        "concept_understanding_score": 0.15906632491323522,
+        "ai_generated_content_percentage": 0.06851912239780238,
+        "improvement_rate": 0.06088742124710535,
+        "ai_usage_time_minutes": 0.045110931042810505,
+        "attendance_percentage": 0.03434809535633252
+    },
+    "embedded_gradient_boosting": {
+        "last_exam_score": 0.4122197234867656,
+        "assignment_scores_avg": 0.2155802662754309,
+        "concept_understanding_score": 0.1601334499554867,
+        "ai_generated_content_percentage": 0.05833536482292436,
+        "social_media_hours": 0.054458429831514575,
+        "improvement_rate": 0.051929680712286506,
+        "attendance_percentage": 0.04734308491559141
+    }
+}

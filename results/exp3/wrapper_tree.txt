@@ -1,0 +1,703 @@
+|--- last_exam_score <= 53.50
+|   |--- assignment_scores_avg <= 64.85
+|   |   |--- concept_understanding_score <= 5.50
+|   |   |   |--- last_exam_score <= 38.50
+|   |   |   |   |--- assignment_scores_avg <= 50.05
+|   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |--- ai_usage_time_minutes <= 178.50
+|   |   |   |   |   |   |   |--- improvement_rate <= 28.25
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- improvement_rate >  28.25
+|   |   |   |   |   |   |   |   |--- improvement_rate <= 28.35
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- improvement_rate >  28.35
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 45.40
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  45.40
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 30.65
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  30.65
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- ai_usage_time_minutes >  178.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |--- last_exam_score <= 36.50
+|   |   |   |   |   |   |   |--- concept_understanding_score <= 4.50
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 32.90
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= 21.80
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  21.80
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  32.90
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- concept_understanding_score >  4.50
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 39.50
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 26.50
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 31.75
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  31.75
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  26.50
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 1.70
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  1.70
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  39.50
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 31.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  31.50
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 20.30
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  20.30
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- last_exam_score >  36.50
+|   |   |   |   |   |   |   |--- improvement_rate <= 6.05
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 38.35
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  38.35
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- improvement_rate >  6.05
+|   |   |   |   |   |   |   |   |--- improvement_rate <= 23.05
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- improvement_rate >  23.05
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  50.05
+|   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 3.00
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  3.00
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 91.50
+|   |   |   |   |   |   |   |   |--- attendance_percentage <= 64.55
+|   |   |   |   |   |   |   |   |   |--- concept_understanding_score <= 1.50
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= -6.85
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  -6.85
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- concept_understanding_score >  1.50
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 18.20
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  18.20
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |--- attendance_percentage >  64.55
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= -2.30
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  -2.30
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 50.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 8
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  50.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  91.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |--- last_exam_score <= 23.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- last_exam_score >  23.50
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 51.10
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  51.10
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 58.50
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 33.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 165.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  165.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  33.50
+|   |   |   |   |   |   |   |   |   |   |--- concept_understanding_score <= 4.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- concept_understanding_score >  4.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  58.50
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 86.00
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 67.45
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage >  67.45
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  86.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  38.50
+|   |   |   |   |--- assignment_scores_avg <= 49.75
+|   |   |   |   |   |--- concept_understanding_score <= 2.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 24.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 149.50
+|   |   |   |   |   |   |   |   |--- improvement_rate <= -14.95
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- improvement_rate >  -14.95
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 51.50
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 35.85
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  35.85
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  51.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  149.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  24.50
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 49.40
+|   |   |   |   |   |   |   |   |--- improvement_rate <= 23.25
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 42.70
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  42.70
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 52.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  52.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- improvement_rate >  23.25
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  49.40
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  2.50
+|   |   |   |   |   |   |--- assignment_scores_avg <= 39.10
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 21.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  21.00
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 75.00
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 66.00
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 73.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  73.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  66.00
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 4.15
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  4.15
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  75.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- assignment_scores_avg >  39.10
+|   |   |   |   |   |   |   |--- last_exam_score <= 47.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 40.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  40.50
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 47.45
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  47.45
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 9.85
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  9.85
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |--- last_exam_score >  47.50
+|   |   |   |   |   |   |   |   |--- attendance_percentage <= 41.35
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- attendance_percentage >  41.35
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  49.75
+|   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 77.50
+|   |   |   |   |   |   |   |--- concept_understanding_score <= 1.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 48.50
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 92.00
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 42.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  42.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  92.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  48.50
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 64.55
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 27.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  27.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  64.55
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- concept_understanding_score >  1.50
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 67.50
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 39.50
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 51.25
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  51.25
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  39.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 49.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  49.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  67.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  77.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 153.50
+|   |   |   |   |   |   |   |   |--- improvement_rate <= -15.90
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- improvement_rate >  -15.90
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  153.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |--- improvement_rate <= 35.55
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 51.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  51.50
+|   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 149.00
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 55.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  55.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  149.00
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 42.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  42.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  35.55
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 72.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  72.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |--- concept_understanding_score >  5.50
+|   |   |   |--- last_exam_score <= 34.50
+|   |   |   |   |--- assignment_scores_avg <= 57.25
+|   |   |   |   |   |--- concept_understanding_score <= 7.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 56.50
+|   |   |   |   |   |   |   |--- last_exam_score <= 31.50
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 9.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  9.50
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 33.65
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  33.65
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= -7.55
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  -7.55
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |--- last_exam_score >  31.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  56.50
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 46.75
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 29.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- last_exam_score >  29.50
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 30.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 89.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  89.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  30.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  46.75
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 48.75
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  48.75
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 33.50
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 32.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  32.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  33.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  7.50
+|   |   |   |   |   |   |--- assignment_scores_avg <= 46.25
+|   |   |   |   |   |   |   |--- attendance_percentage <= 88.85
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 23.50
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= 17.90
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  17.90
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 64.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  64.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |--- last_exam_score >  23.50
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 79.05
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 69.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  69.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  79.05
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- attendance_percentage >  88.85
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 33.50
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 14.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  14.00
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 98.35
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage >  98.35
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  33.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- assignment_scores_avg >  46.25
+|   |   |   |   |   |   |   |--- last_exam_score <= 28.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 21.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  21.50
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= -7.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  -7.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 84.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  84.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- last_exam_score >  28.50
+|   |   |   |   |   |   |   |   |--- attendance_percentage <= 46.30
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 43.05
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  43.05
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- attendance_percentage >  46.30
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  57.25
+|   |   |   |   |   |--- last_exam_score <= 20.50
+|   |   |   |   |   |   |--- ai_usage_time_minutes <= 64.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- ai_usage_time_minutes >  64.50
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 22.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  22.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- last_exam_score >  20.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  34.50
+|   |   |   |   |--- assignment_scores_avg <= 42.15
+|   |   |   |   |   |--- concept_understanding_score <= 8.50
+|   |   |   |   |   |   |--- improvement_rate <= -4.80
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  -4.80
+|   |   |   |   |   |   |   |--- attendance_percentage <= 46.55
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- attendance_percentage >  46.55
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 94.00
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 34.75
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 85.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  85.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  34.75
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 34.65
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  34.65
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  94.00
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 50.40
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  50.40
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  8.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 92.00
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  92.00
+|   |   |   |   |   |   |   |--- attendance_percentage <= 60.90
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- attendance_percentage >  60.90
+|   |   |   |   |   |   |   |   |--- attendance_percentage <= 68.25
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- attendance_percentage >  68.25
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  42.15
+|   |   |   |   |   |--- improvement_rate <= 3.45
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- improvement_rate >  3.45
+|   |   |   |   |   |   |--- improvement_rate <= 29.85
+|   |   |   |   |   |   |   |--- concept_understanding_score <= 9.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 49.50
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 44.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  44.50
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 59.40
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 8
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  59.40
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  49.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- concept_understanding_score >  9.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  29.85
+|   |   |   |   |   |   |   |--- class: 1
+|   |--- assignment_scores_avg >  64.85
+|   |   |--- concept_understanding_score <= 4.50
+|   |   |   |--- last_exam_score <= 32.50
+|   |   |   |   |--- assignment_scores_avg <= 90.45
+|   |   |   |   |   |--- concept_understanding_score <= 2.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 3.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  3.50
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 75.85
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 86.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  86.00
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 62.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  62.00
+|   |   |   |   |   |   |   |   |   |   |--- concept_understanding_score <= 1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- concept_understanding_score >  1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  75.85
+|   |   |   |   |   |   |   |   |--- attendance_percentage <= 88.55
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 76.70
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  76.70
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 37.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  37.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 8
+|   |   |   |   |   |   |   |   |--- attendance_percentage >  88.55
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 84.95
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 30.65
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  30.65
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  84.95
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 18.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  18.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  2.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 41.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 20.50
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 75.30
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  75.30
+|   |   |   |   |   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  20.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  41.50
+|   |   |   |   |   |   |   |--- last_exam_score <= 27.50
+|   |   |   |   |   |   |   |   |--- attendance_percentage <= 86.65
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 73.70
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  73.70
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 70.20
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage >  70.20
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- attendance_percentage >  86.65
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- last_exam_score >  27.50
+|   |   |   |   |   |   |   |   |--- improvement_rate <= -17.80
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- improvement_rate >  -17.80
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  90.45
+|   |   |   |   |   |--- improvement_rate <= 4.35
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- improvement_rate >  4.35
+|   |   |   |   |   |   |--- last_exam_score <= 26.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 35.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  35.00
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 92.05
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  92.05
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 21.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  21.50
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 97.35
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  97.35
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |--- last_exam_score >  26.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 15.00
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 29.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  29.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  15.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  32.50
+|   |   |   |   |--- assignment_scores_avg <= 71.35
+|   |   |   |   |   |--- attendance_percentage <= 48.85
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- attendance_percentage >  48.85
+|   |   |   |   |   |   |--- improvement_rate <= -13.25
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  -13.25
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 84.00
+|   |   |   |   |   |   |   |   |--- improvement_rate <= 20.95
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 68.00
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 41.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  41.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  68.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- improvement_rate >  20.95
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  84.00
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 97.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  97.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  71.35
+|   |   |   |   |   |--- improvement_rate <= 19.45
+|   |   |   |   |   |   |--- improvement_rate <= -7.45
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  -7.45
+|   |   |   |   |   |   |   |--- last_exam_score <= 48.50
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 94.70
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 152.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 149.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 8
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  149.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  152.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  94.70
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- last_exam_score >  48.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- improvement_rate >  19.45
+|   |   |   |   |   |   |--- concept_understanding_score <= 1.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- concept_understanding_score >  1.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |--- concept_understanding_score >  4.50
+|   |   |   |--- concept_understanding_score <= 6.50
+|   |   |   |   |--- last_exam_score <= 35.50
+|   |   |   |   |   |--- assignment_scores_avg <= 72.60
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 58.00
+|   |   |   |   |   |   |   |--- attendance_percentage <= 93.15
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- attendance_percentage >  93.15
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 32.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  32.00
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 29.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  29.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  58.00
+|   |   |   |   |   |   |   |--- improvement_rate <= -4.15
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 90.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  90.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- improvement_rate >  -4.15
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- assignment_scores_avg >  72.60
+|   |   |   |   |   |   |--- ai_usage_time_minutes <= 41.50
+|   |   |   |   |   |   |   |--- last_exam_score <= 26.00
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 21.00
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  21.00
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 81.05
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  81.05
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- last_exam_score >  26.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_usage_time_minutes >  41.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- last_exam_score >  35.50
+|   |   |   |   |   |--- assignment_scores_avg <= 65.20
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- assignment_scores_avg >  65.20
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- concept_understanding_score >  6.50
+|   |   |   |   |--- class: 1
+|--- last_exam_score >  53.50
+|   |--- assignment_scores_avg <= 61.85
+|   |   |--- concept_understanding_score <= 2.50
+|   |   |   |--- last_exam_score <= 72.50
+|   |   |   |   |--- ai_usage_time_minutes <= 9.00
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- ai_usage_time_minutes >  9.00
+|   |   |   |   |   |--- last_exam_score <= 62.50
+|   |   |   |   |   |   |--- improvement_rate <= 35.45
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 8.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  8.00
+|   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 155.00
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 59.65
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 14.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  14.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  59.65
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  155.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- improvement_rate >  35.45
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- last_exam_score >  62.50
+|   |   |   |   |   |   |--- assignment_scores_avg <= 50.85
+|   |   |   |   |   |   |   |--- attendance_percentage <= 50.75
+|   |   |   |   |   |   |   |   |--- improvement_rate <= 3.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- improvement_rate >  3.00
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 33.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  33.50
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 6.20
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  6.20
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- attendance_percentage >  50.75
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 29.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  29.50
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= -1.95
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 44.70
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  44.70
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  -1.95
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 40.95
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  40.95
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |--- assignment_scores_avg >  50.85
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  72.50
+|   |   |   |   |--- assignment_scores_avg <= 33.95
+|   |   |   |   |   |--- ai_generated_content_percentage <= 73.00
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- ai_generated_content_percentage >  73.00
+|   |   |   |   |   |   |--- improvement_rate <= 15.75
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  15.75
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- assignment_scores_avg >  33.95
+|   |   |   |   |   |--- class: 1
+|   |   |--- concept_understanding_score >  2.50
+|   |   |   |--- last_exam_score <= 70.50
+|   |   |   |   |--- concept_understanding_score <= 5.50
+|   |   |   |   |   |--- assignment_scores_avg <= 32.20
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 47.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  47.50
+|   |   |   |   |   |   |   |--- attendance_percentage <= 77.10
+|   |   |   |   |   |   |   |   |--- improvement_rate <= 12.70
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 60.20
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  60.20
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- improvement_rate >  12.70
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- attendance_percentage >  77.10
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- assignment_scores_avg >  32.20
+|   |   |   |   |   |   |--- concept_understanding_score <= 4.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 121.50
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 85.50
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 59.50
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 13.70
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  13.70
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  59.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  85.50
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 93.50
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 60.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  60.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  93.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  121.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- concept_understanding_score >  4.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- concept_understanding_score >  5.50
+|   |   |   |   |   |--- attendance_percentage <= 40.15
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- attendance_percentage >  40.15
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  70.50
+|   |   |   |   |--- class: 1
+|   |--- assignment_scores_avg >  61.85
+|   |   |--- attendance_percentage <= 40.05
+|   |   |   |--- class: 1
+|   |   |--- attendance_percentage >  40.05
+|   |   |   |--- class: 1
