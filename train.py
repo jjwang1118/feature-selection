@@ -274,4 +274,79 @@ if __name__ == "__main__":
         print(f"\n✅ Experiment 2 complete! Results logged to {output_file}")
         
     elif exp_idx == 3:
-        pass
+        print(f"\n--- Running Experiment 3 (Transferability Phase, K={k_value}) ---")
+        model_dir = f"model/exp_{exp_idx}"
+        os.makedirs(model_dir, exist_ok=True)
+        
+        # 匯入其他的機器學習模型來「幫忙挑選特徵」
+        from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+        
+        print(f"Target K set to {k_value}.")
+        print("Wrapper and Embedded will use advanced models (Random Forest & Gradient Boosting) to select features.")
+        
+        # Step A: 三種方法各自選出 K 個特徵
+        # 1. Filter: 還是用數學方法
+        features_filter = run_filter(X_train, y_train, k=k_value)
+        
+        # 2. Wrapper: 用 Random Forest 幫忙挑特徵
+        rf_selector = RandomForestClassifier(random_state=SEED)
+        features_wrapper = run_wrapper_k(X_train, y_train, k=k_value, estimator=rf_selector)
+        
+        # 3. Embedded: 用 Gradient Boosting 幫忙挑特徵
+        gb_selector = GradientBoostingClassifier(random_state=SEED)
+        features_embedded = run_embedded_k(X_train, y_train, k=k_value, estimator=gb_selector)
+        
+        # === 訓練與評估三種模型 (注意：這裡還是要用 Base Decision Tree 來當裁判！) ===
+        
+        # 1. Filter Model
+        dt_filt = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+        dt_filt.fit(X_train[features_filter], y_train)
+        metrics_filt = evaluate_model(dt_filt, X_test[features_filter], y_test)
+        
+        joblib.dump(dt_filt, f"{model_dir}/filter_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
+
+        # 2. Wrapper Model
+        dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+        dt_wrap.fit(X_train[features_wrapper], y_train)
+        metrics_wrap = evaluate_model(dt_wrap, X_test[features_wrapper], y_test)
+        
+        joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+
+        # 3. Embedded Model
+        dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+        dt_embed.fit(X_train[features_embedded], y_train)
+        metrics_embed = evaluate_model(dt_embed, X_test[features_embedded], y_test)
+        
+        joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+
+        # 列印結果比較
+        print(f"\n[Transferability Results (N={k_value})]")
+        print(f"Filter F1:   {metrics_filt['f1_score']:.4f} (Features: {features_filter})")
+        print(f"Wrapper F1:  {metrics_wrap['f1_score']:.4f} (Features picked by Random Forest)")
+        print(f"Embedded F1: {metrics_embed['f1_score']:.4f} (Features picked by Gradient Boosting)")
+
+        # === Package and Save JSON Results ===
+        exp3_results = {
+            "k_value": k_value,
+            "filter": {
+                "selected_features": features_filter,
+                "metrics": metrics_filt
+            },
+            "wrapper_random_forest": {
+                "selected_features": features_wrapper,
+                "metrics": metrics_wrap
+            },
+            "embedded_gradient_boosting": {
+                "selected_features": features_embedded,
+                "metrics": metrics_embed
+            }
+        }
+        
+        output_file = f"{results_dir}/exp3_results.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(exp3_results, f, indent=4, ensure_ascii=False)
+            
+        print(f"\n✅ Experiment 3 complete! Results logged to {output_file}")
