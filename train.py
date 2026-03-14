@@ -86,6 +86,9 @@ if __name__ == "__main__":
     elif exp_idx == 1:
         print("\n--- Running Experiment 1 (Feature Selection Comparisons) ---")
         
+        model_dir = f"model/exp_{exp_idx}"
+        os.makedirs(model_dir, exist_ok=True)
+        
         # Step A: Wrapper
         wrapper_features = run_wrapper(X_train, y_train)
         n_wrapper = len(wrapper_features)
@@ -107,9 +110,14 @@ if __name__ == "__main__":
         dt_wrap.fit(X_train[wrapper_features], y_train)
         metrics_wrap = evaluate_model(dt_wrap, X_test[wrapper_features], y_test)
         
+        joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'], max_depth=10)
+        
         dt_filt_1 = DecisionTreeClassifier(random_state=SEED)
         dt_filt_1.fit(X_train[filter_features_for_wrapper], y_train)
         metrics_filt_1 = evaluate_model(dt_filt_1, X_test[filter_features_for_wrapper], y_test)
+        joblib.dump(dt_filt_1, f"{model_dir}/filter_model_wrapper.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
         
         overlap_1 = calculate_overlap(wrapper_features, filter_features_for_wrapper)
         print(f"Wrapper F1: {metrics_wrap['f1_score']:.4f} | Filter F1: {metrics_filt_1['f1_score']:.4f} | Overlap: {overlap_1:.2f}")
@@ -121,9 +129,17 @@ if __name__ == "__main__":
         dt_embed.fit(X_train[embedded_features], y_train)
         metrics_embed = evaluate_model(dt_embed, X_test[embedded_features], y_test)
         
+        joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'], max_depth=10)
+        
+        
         dt_filt_2 = DecisionTreeClassifier(random_state=SEED)
         dt_filt_2.fit(X_train[filter_features_for_embedded], y_train)
         metrics_filt_2 = evaluate_model(dt_filt_2, X_test[filter_features_for_embedded], y_test)
+        
+        joblib.dump(dt_filt_2, f"{model_dir}/filter_model_embedded.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+        
         
         overlap_2 = calculate_overlap(embedded_features, filter_features_for_embedded)
         print(f"Embedded F1: {metrics_embed['f1_score']:.4f} | Filter F1: {metrics_filt_2['f1_score']:.4f} | Overlap: {overlap_2:.2f}")
