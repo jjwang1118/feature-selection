@@ -80,7 +80,6 @@ if __name__ == "__main__":
             print(f"✅ Baseline model saved to {model_file}/{model_name}")
 
         tv.visualize_decision_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(clf, save_path=f"{results_dir}/baseline_tree.txt", feature_names=X_train.columns.tolist())
         matric=evaluate_model(clf, X_test, y_test)
 
         # matrix , depth and nodes
@@ -146,7 +145,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=wrapper_features)
         
         # Train or load Filter model (matchup 1)
         if os.path.exists(f"{model_dir}/filter_model_wrapper.pkl"):
@@ -167,7 +165,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.txt", feature_names=filter_features_for_wrapper)
         
         overlap_1 = calculate_overlap(wrapper_features, filter_features_for_wrapper)
         print(f"Wrapper F1: {metrics_wrap['f1_score']:.4f} | Filter F1: {metrics_filt_1['f1_score']:.4f} | Overlap: {overlap_1:.2f}")
@@ -194,7 +191,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=embedded_features)
         
         
         # Train or load Filter model (matchup 2)
@@ -216,7 +212,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.txt", feature_names=filter_features_for_embedded)
         
         overlap_2 = calculate_overlap(embedded_features, filter_features_for_embedded)
         print(f"Embedded F1: {metrics_embed['f1_score']:.4f} | Filter F1: {metrics_filt_2['f1_score']:.4f} | Overlap: {overlap_2:.2f}")
@@ -337,7 +332,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_filt, save_path=f"{results_dir}/filter_tree.txt", feature_names=features_filter)
 
         # 2. Wrapper Model (exp2)
         if os.path.exists(f"{model_dir}/wrapper_model.pkl"):
@@ -358,7 +352,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=features_wrapper)
 
         # 3. Embedded Model (exp2)
         if os.path.exists(f"{model_dir}/embedded_model.pkl"):
@@ -379,7 +372,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=features_embedded)
 
         # 列印結果比較
         print(f"\n[Bottleneck Results (N={min_n})]")
@@ -447,6 +439,11 @@ if __name__ == "__main__":
         model_dir = f"model/exp_{exp_idx}"
         os.makedirs(model_dir, exist_ok=True)
         
+        # 為每個 k 值創建專屬子目錄來存放圖片和結果
+        k_results_dir = f"{results_dir}/k-{k_value}"
+        os.makedirs(k_results_dir, exist_ok=True)
+        print(f"📁 Results will be saved to: {k_results_dir}")
+        
         # 匯入其他的機器學習模型來「幫忙挑選特徵」
         from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
         
@@ -485,8 +482,7 @@ if __name__ == "__main__":
             'n_leaves': int(dt_filt.get_n_leaves())
         }
         
-        tv.visualize_decision_tree(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_filt, save_path=f"{results_dir}/filter_tree.txt", feature_names=features_filter)
+        tv.visualize_decision_tree(dt_filt, save_path=f"{k_results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
 
         # 2. Wrapper Model
         if os.path.exists(f"{model_dir}/wrapper_model.pkl"):
@@ -506,8 +502,7 @@ if __name__ == "__main__":
             'n_leaves': int(dt_wrap.get_n_leaves())
         }
         
-        tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=features_wrapper)
+        tv.visualize_decision_tree(dt_wrap, save_path=f"{k_results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
 
         # 3. Embedded Model
         if os.path.exists(f"{model_dir}/embedded_model.pkl"):
@@ -527,8 +522,7 @@ if __name__ == "__main__":
             'n_leaves': int(dt_embed.get_n_leaves())
         }
         
-        tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
-        tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=features_embedded)
+        tv.visualize_decision_tree(dt_embed, save_path=f"{k_results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
 
         # 列印結果比較
         print(f"\n[Transferability Results (N={k_value})]")
@@ -553,8 +547,9 @@ if __name__ == "__main__":
             }
         }
         
-        output_file = f"{results_dir}/exp3_results.json"
-        with open(output_file, "w", encoding="utf-8") as f:
+        # 保存到 k 子目錄
+        output_file_k = f"{k_results_dir}/exp3_results.json"
+        with open(output_file_k, "w", encoding="utf-8") as f:
             json.dump(exp3_results, f, indent=4, ensure_ascii=False)
         
         # Save feature importance for all models in exp3
@@ -579,27 +574,32 @@ if __name__ == "__main__":
             feature_importance_exp3["embedded_gradient_boosting"][feature] = value
         feature_importance_exp3["embedded_gradient_boosting"] = dict(sorted(feature_importance_exp3["embedded_gradient_boosting"].items(), key=lambda item: item[1], reverse=True))
         
-        with open(f"{results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
+        # 保存到 k 子目錄
+        with open(f"{k_results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
             json.dump(feature_importance_exp3, f, indent=4, ensure_ascii=False)
         
-        # Save jaccard similarity for exp3 (accumulative by k value)
-        jaccard_file = f"{results_dir}/jaccard_similarity.json"
+
         
-        # Load existing jaccard similarity data if exists
-        if os.path.exists(jaccard_file):
-            with open(jaccard_file, "r", encoding="utf-8") as f:
-                jaccard_all = json.load(f)
-        else:
-            jaccard_all = {}
+        # Save jaccard similarity for exp3 (accumulative by k value)
+        jaccard_file_k = f"{k_results_dir}/jaccard_similarity.json"
+        
+
+        jaccard_all = {}
         
         # Add current k value results
-        jaccard_all[f"k_{k_value}"] = {
+        jaccard_current = {
             "filter_vs_wrapper_random_forest": calculate_overlap(features_filter, features_wrapper),
             "filter_vs_embedded_gradient_boosting": calculate_overlap(features_filter, features_embedded),
             "wrapper_random_forest_vs_embedded_gradient_boosting": calculate_overlap(features_wrapper, features_embedded)
         }
         
-        with open(jaccard_file, "w", encoding="utf-8") as f:
-            json.dump(jaccard_all, f, indent=4, ensure_ascii=False)
+        jaccard_all[f"k_{k_value}"] = jaccard_current
         
-        print(f"\n✅ Experiment 3 complete! Results logged to {output_file}")
+        # 保存當前 k 值的結果到 k 子目錄
+        with open(jaccard_file_k, "w", encoding="utf-8") as f:
+            json.dump(jaccard_current, f, indent=4, ensure_ascii=False)
+        
+        
+        print(f"\n✅ Experiment 3 (K={k_value}) complete!")
+        print(f"📁 Results saved to: {k_results_dir}")
+        print(f"📄 Summary also saved to: {output_file_k}")
