@@ -13,6 +13,7 @@ def split_data(save_path, split_ratio=0.8):
         config = json.load(f)
 
     seed = config.get("seed", 42)
+    
     """
     分割數據為訓練集和測試集，並保存到文件
     

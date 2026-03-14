@@ -19,6 +19,7 @@ if __name__ == "__main__":
     visual_path = config["feature_visual"]
     med_mean_path = config["median_mean_cac"]
     missing_value_path = config["missing_value"]
+    split_ratio = config.get("data_split_ratio", 0.8)
 
     dp.download_dataset("ai-impact-on-student-performance", dataset_path)
     data = pd.read_csv(f"{dataset_path}/ai_impact_student_performance_dataset.csv", keep_default_na=False, na_values=['', 'NA', 'NaN', 'NULL'])
@@ -38,7 +39,7 @@ if __name__ == "__main__":
 
     # 分割訓練集和測試集
     split_save_path = "dataset/split"
-    (train_data, train_label), (test_data, test_label) = sd.split_data(split_save_path, split_ratio=0.8)
+    (train_data, train_label), (test_data, test_label) = sd.split_data(split_save_path, split_ratio=split_ratio)
     
     # 可視化訓練集和測試集的分佈對比
     train_full = pd.read_csv(f"{split_save_path}/train.csv")
