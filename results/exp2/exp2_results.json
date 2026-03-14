@@ -1,0 +1,42 @@
+{
+    "bottleneck_n": 3,
+    "filter": {
+        "selected_features": [
+            "last_exam_score",
+            "assignment_scores_avg",
+            "concept_understanding_score"
+        ],
+        "metrics": {
+            "accuracy": 0.913125,
+            "precision": 0.9579172610556348,
+            "recall": 0.94378074490513,
+            "f1_score": 0.9507964601769912
+        }
+    },
+    "wrapper": {
+        "selected_features": [
+            "last_exam_score",
+            "assignment_scores_avg",
+            "concept_understanding_score"
+        ],
+        "metrics": {
+            "accuracy": 0.913125,
+            "precision": 0.9579172610556348,
+            "recall": 0.94378074490513,
+            "f1_score": 0.9507964601769912
+        }
+    },
+    "embedded": {
+        "selected_features": [
+            "concept_understanding_score",
+            "last_exam_score",
+            "assignment_scores_avg"
+        ],
+        "metrics": {
+            "accuracy": 0.913125,
+            "precision": 0.9579172610556348,
+            "recall": 0.94378074490513,
+            "f1_score": 0.9507964601769912
+        }
+    }
+}

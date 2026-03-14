@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.feature_selection import SelectKBest, RFECV, SelectFromModel, mutual_info_classif
+from sklearn.feature_selection import SelectKBest, RFECV, SelectFromModel, mutual_info_classif, RFE
 from sklearn.tree import DecisionTreeClassifier
 
 def run_filter(X_train, y_train, k):
@@ -51,4 +51,36 @@ def run_embedded(X_train, y_train, estimator=None):
     selector.fit(X_train, y_train)
     
     selected_features = X_train.columns[selector.get_support()].tolist()
+    return selected_features
+
+from sklearn.feature_selection import RFE
+import numpy as np
+
+def run_wrapper_k(X_train, y_train, k, estimator=None):
+    """Wrapper Method: 強制精確選擇 K 個特徵 (RFE)"""
+    if estimator is None:
+        from sklearn.tree import DecisionTreeClassifier
+        estimator = DecisionTreeClassifier(random_state=42)
+        
+    # 使用普通的 RFE (非 RFECV) 讓我們可以強制指定 n_features_to_select
+    selector = RFE(estimator=estimator, n_features_to_select=k, step=1)
+    selector.fit(X_train, y_train)
+    
+    selected_features = X_train.columns[selector.get_support()].tolist()
+    return selected_features
+
+def run_embedded_k(X_train, y_train, k, estimator=None):
+    """Embedded Method: 強制精確選擇 K 個特徵 (Decision Tree Importances)"""
+    if estimator is None:
+        from sklearn.tree import DecisionTreeClassifier
+        estimator = DecisionTreeClassifier(random_state=42)
+        
+    estimator.fit(X_train, y_train)
+    importances = estimator.feature_importances_
+    
+    # 找出重要性最高的前 k 個特徵的 index
+    # argsort 會由小到大排序，所以我們取最後 k 個 [-k:]
+    top_k_indices = np.argsort(importances)[-k:]
+    
+    selected_features = X_train.columns[top_k_indices].tolist()
     return selected_features

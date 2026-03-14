@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 # from util.feature_selectors import run_filter, run_wrapper, run_embedded
 from util.evaluation import evaluate_model, calculate_overlap
-from util.feature_selectors import run_filter, run_wrapper, run_embedded
+from util.feature_selectors import run_filter, run_wrapper, run_embedded, run_embedded_k, run_wrapper_k
 import joblib
 import util.tree_visualize as tv
 
@@ -179,7 +179,77 @@ if __name__ == "__main__":
         print(f"\n✅ Experiment 1 complete! Results neatly logged to {output_file}")
 
     elif exp_idx == 2:
-        pass
+        print("\n--- Running Experiment 2 (The Bottleneck Phase) ---")
+        model_dir = f"model/exp_{exp_idx}"
+        os.makedirs(model_dir, exist_ok=True)
+        
+        #Step A: 找出第一輪的最小值 (Minimum N)
+        n_wrapper_auto = len(run_wrapper(X_train, y_train))
+        n_embedded_auto = len(run_embedded(X_train, y_train))
+        min_n = min(n_wrapper_auto, n_embedded_auto)
+        
+        min_n = max(1, min_n)
+        print(f"Wrapper wanted {n_wrapper_auto}, Embedded wanted {n_embedded_auto}.")
+        print(f"Bottleneck activated: Forcing all algorithms to select exactly {min_n} features.")
+        # Step B: 三種方法各自選出 min_n 個特徵
+        features_filter = run_filter(X_train, y_train, k=min_n)
+        features_wrapper = run_wrapper_k(X_train, y_train, k=min_n)
+        features_embedded = run_embedded_k(X_train, y_train, k=min_n)
+        
+        # === 訓練與評估三種模型 ===
+        
+        # 1. Filter Model
+        dt_filt = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+        dt_filt.fit(X_train[features_filter], y_train)
+        metrics_filt = evaluate_model(dt_filt, X_test[features_filter], y_test)
+        
+        joblib.dump(dt_filt, f"{model_dir}/filter_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
 
+        # 2. Wrapper Model
+        dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+        dt_wrap.fit(X_train[features_wrapper], y_train)
+        metrics_wrap = evaluate_model(dt_wrap, X_test[features_wrapper], y_test)
+        
+        joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
+
+        # 3. Embedded Model
+        dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
+        dt_embed.fit(X_train[features_embedded], y_train)
+        metrics_embed = evaluate_model(dt_embed, X_test[features_embedded], y_test)
+        
+        joblib.dump(dt_embed, f"{model_dir}/embedded_model.pkl")
+        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
+
+        # 列印結果比較
+        print(f"\n[Bottleneck Results (N={min_n})]")
+        print(f"Filter F1:   {metrics_filt['f1_score']:.4f}")
+        print(f"Wrapper F1:  {metrics_wrap['f1_score']:.4f}")
+        print(f"Embedded F1: {metrics_embed['f1_score']:.4f}")
+
+        # === Package and Save JSON Results ===
+        exp2_results = {
+            "bottleneck_n": min_n,
+            "filter": {
+                "selected_features": features_filter,
+                "metrics": metrics_filt
+            },
+            "wrapper": {
+                "selected_features": features_wrapper,
+                "metrics": metrics_wrap
+            },
+            "embedded": {
+                "selected_features": features_embedded,
+                "metrics": metrics_embed
+            }
+        }
+        
+        output_file = f"{results_dir}/exp2_results.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(exp2_results, f, indent=4, ensure_ascii=False)
+            
+        print(f"\n✅ Experiment 2 complete! Results logged to {output_file}")
+        
     elif exp_idx == 3:
         pass
