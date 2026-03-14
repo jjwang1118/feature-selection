@@ -120,7 +120,7 @@ def _plot_feature_comparison(train_col, test_col, col_name, save_path):
     print(f"✅ Comparison saved: {output_path}")
 
 
-def record_feature_statistics(train_data, test_data, save_path="result/stastic/compose"):
+def record_feature_statistics(train_data, test_data, save_path="results/stastic/compose"):
     """
     紀錄每個特徵的類別名稱、對應數值（train/test 計數）、中位數和平均數
 

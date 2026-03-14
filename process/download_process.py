@@ -140,7 +140,7 @@ def caculate_median(data,path,col,store_path):
     
     print(f"{col} 的中位數 ({mean_value:.2f}) 已保存至 {json_file}")
 
-def process_missing_values(data: pd.DataFrame, store_path: str, record_path: str = "result/statistic/missing_value.json"):
+def process_missing_values(data: pd.DataFrame, store_path: str, record_path: str = "results/stastic/missing_value.json"):
     """
     處理缺失值的函數
     - 統計缺失值數量

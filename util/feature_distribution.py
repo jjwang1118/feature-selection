@@ -231,7 +231,7 @@ def draw_bar_chart(data, col, store_path="./"):
     print(f"✅ Bar chart saved: {output_path}")
 
 
-def draw_picture(data, col, med_mean_path, missing_value_path, store_path="result/statistic/image"):
+def draw_picture(data, col, med_mean_path, missing_value_path, store_path="results/statistic/image"):
     """
     根據欄位類型繪製對應的圖表
     
@@ -298,7 +298,7 @@ def draw_picture(data, col, med_mean_path, missing_value_path, store_path="resul
                 draw_bar_chart(col_data, col, store_path)
 
 
-def draw_all_pictures(data, med_mean_path, missing_value_path, store_path="result/stastic/image"):
+def draw_all_pictures(data, med_mean_path, missing_value_path, store_path="results/stastic/image"):
     """
     參數:
         data: DataFrame，完整數據

@@ -44,8 +44,8 @@ if __name__ == "__main__":
     # 可視化訓練集和測試集的分佈對比
     train_full = pd.read_csv(f"{split_save_path}/train.csv")
     test_full = pd.read_csv(f"{split_save_path}/test.csv")
-    dc.visualize_train_test_distribution(train_full, test_full, "result/stastic/compose/image")
-    dc.record_feature_statistics(train_full, test_full, "result/stastic/compose")
+    dc.visualize_train_test_distribution(train_full, test_full, "results/stastic/compose/image")
+    dc.record_feature_statistics(train_full, test_full, "results/stastic/compose")
 
 
 

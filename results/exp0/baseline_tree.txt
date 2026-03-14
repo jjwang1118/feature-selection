@@ -1,0 +1,643 @@
+|--- last_exam_score <= 53.50
+|   |--- assignment_scores_avg <= 64.85
+|   |   |--- concept_understanding_score <= 5.50
+|   |   |   |--- last_exam_score <= 38.50
+|   |   |   |   |--- assignment_scores_avg <= 50.05
+|   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |--- social_media_hours <= 0.05
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- social_media_hours >  0.05
+|   |   |   |   |   |   |   |--- study_consistency_index <= 2.65
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 30.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  30.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- study_consistency_index >  2.65
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |--- last_exam_score <= 36.50
+|   |   |   |   |   |   |   |--- social_media_hours <= 5.95
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 24.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- last_exam_score >  24.50
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index <= 9.70
+|   |   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 63.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  63.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index >  9.70
+|   |   |   |   |   |   |   |   |   |   |--- age <= 18.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- age >  18.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- social_media_hours >  5.95
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- last_exam_score >  36.50
+|   |   |   |   |   |   |   |--- improvement_rate <= 6.05
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- improvement_rate >  6.05
+|   |   |   |   |   |   |   |   |--- study_hours_per_day <= 2.55
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- study_hours_per_day >  2.55
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- assignment_scores_avg >  50.05
+|   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 3.00
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  3.00
+|   |   |   |   |   |   |   |--- tutoring_hours <= 1.55
+|   |   |   |   |   |   |   |   |--- sleep_hours <= 8.50
+|   |   |   |   |   |   |   |   |   |--- study_hours_per_day <= 2.95
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- study_hours_per_day >  2.95
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 54.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- attendance_percentage >  54.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |--- sleep_hours >  8.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- tutoring_hours >  1.55
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 36.50
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index <= 8.95
+|   |   |   |   |   |   |   |   |   |   |--- study_hours_per_day <= 0.75
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- study_hours_per_day >  0.75
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index >  8.95
+|   |   |   |   |   |   |   |   |   |   |--- study_hours_per_day <= 2.95
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- study_hours_per_day >  2.95
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |--- last_exam_score >  36.50
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index <= 4.25
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index >  4.25
+|   |   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 38.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  38.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |--- ai_dependency_score <= 4.50
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 99.50
+|   |   |   |   |   |   |   |   |--- study_hours_per_day <= 0.95
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- study_hours_per_day >  0.95
+|   |   |   |   |   |   |   |   |   |--- Claude_usage <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours <= 4.45
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours >  4.45
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- Claude_usage >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  99.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_dependency_score >  4.50
+|   |   |   |   |   |   |   |--- ai_ethics_score <= 8.00
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 31.00
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  31.00
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 99.00
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours <= 7.35
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours >  7.35
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  99.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_ethics_score >  8.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  38.50
+|   |   |   |   |--- assignment_scores_avg <= 49.75
+|   |   |   |   |   |--- concept_understanding_score <= 2.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 24.50
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 149.50
+|   |   |   |   |   |   |   |   |--- improvement_rate <= -14.95
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- improvement_rate >  -14.95
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 51.50
+|   |   |   |   |   |   |   |   |   |   |--- tutoring_hours <= 0.10
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- tutoring_hours >  0.10
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  51.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_time_minutes >  149.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  24.50
+|   |   |   |   |   |   |   |--- social_media_hours <= 3.65
+|   |   |   |   |   |   |   |   |--- ai_ethics_score <= 7.50
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 48.15
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 47.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  47.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  48.15
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_ethics_score >  7.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- social_media_hours >  3.65
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- concept_understanding_score >  2.50
+|   |   |   |   |   |   |--- assignment_scores_avg <= 39.10
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 21.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  21.00
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 75.00
+|   |   |   |   |   |   |   |   |   |--- class_participation_score <= 2.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- class_participation_score >  2.50
+|   |   |   |   |   |   |   |   |   |   |--- grade_level <= 10.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- grade_level >  10.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  75.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- assignment_scores_avg >  39.10
+|   |   |   |   |   |   |   |--- last_exam_score <= 47.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 40.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- last_exam_score >  40.50
+|   |   |   |   |   |   |   |   |   |--- tutoring_hours <= 0.85
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- tutoring_hours >  0.85
+|   |   |   |   |   |   |   |   |   |   |--- ai_dependency_score <= 1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- ai_dependency_score >  1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 8
+|   |   |   |   |   |   |   |--- last_exam_score >  47.50
+|   |   |   |   |   |   |   |   |--- tutoring_hours <= 0.30
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- tutoring_hours >  0.30
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  49.75
+|   |   |   |   |   |--- concept_understanding_score <= 3.50
+|   |   |   |   |   |   |--- ai_prompts_per_week <= 17.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_prompts_per_week >  17.50
+|   |   |   |   |   |   |   |--- study_consistency_index <= 2.25
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- study_consistency_index >  2.25
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 29.00
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index <= 8.90
+|   |   |   |   |   |   |   |   |   |   |--- study_hours_per_day <= 0.90
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- study_hours_per_day >  0.90
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index >  8.90
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  29.00
+|   |   |   |   |   |   |   |   |   |--- study_hours_per_day <= 2.65
+|   |   |   |   |   |   |   |   |   |   |--- ai_ethics_score <= 8.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- ai_ethics_score >  8.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- study_hours_per_day >  2.65
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  3.50
+|   |   |   |   |   |   |--- ai_dependency_score <= 5.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_dependency_score >  5.50
+|   |   |   |   |   |   |   |--- study_hours_per_day <= 3.55
+|   |   |   |   |   |   |   |   |--- social_media_hours <= 1.25
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- social_media_hours >  1.25
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 60.75
+|   |   |   |   |   |   |   |   |   |   |--- study_consistency_index <= 9.15
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- study_consistency_index >  9.15
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  60.75
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- study_hours_per_day >  3.55
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |--- concept_understanding_score >  5.50
+|   |   |   |--- last_exam_score <= 34.50
+|   |   |   |   |--- assignment_scores_avg <= 57.25
+|   |   |   |   |   |--- concept_understanding_score <= 7.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 56.50
+|   |   |   |   |   |   |   |--- last_exam_score <= 31.50
+|   |   |   |   |   |   |   |   |--- social_media_hours <= 0.45
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- social_media_hours >  0.45
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 8.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  8.00
+|   |   |   |   |   |   |   |   |   |   |--- class_participation_score <= 1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- class_participation_score >  1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |--- last_exam_score >  31.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  56.50
+|   |   |   |   |   |   |   |--- ai_ethics_score <= 1.50
+|   |   |   |   |   |   |   |   |--- tutoring_hours <= 2.35
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- tutoring_hours >  2.35
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 55.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  55.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- ai_ethics_score >  1.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 31.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- last_exam_score >  31.50
+|   |   |   |   |   |   |   |   |   |--- age <= 21.00
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 96.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  96.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- age >  21.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  7.50
+|   |   |   |   |   |   |--- sleep_hours <= 8.25
+|   |   |   |   |   |   |   |--- ai_prompts_per_week <= 10.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_prompts_per_week >  10.50
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 46.25
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 66.50
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 23.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  23.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  66.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_dependency_score <= 9.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |   |--- ai_dependency_score >  9.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  46.25
+|   |   |   |   |   |   |   |   |   |--- age <= 15.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- age >  15.50
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours <= 7.45
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours >  7.45
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- sleep_hours >  8.25
+|   |   |   |   |   |   |   |--- class_participation_score <= 3.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- class_participation_score >  3.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  57.25
+|   |   |   |   |   |--- social_media_hours <= 5.65
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- social_media_hours >  5.65
+|   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving <= 0.50
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 80.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  80.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving >  0.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |--- last_exam_score >  34.50
+|   |   |   |   |--- assignment_scores_avg <= 42.15
+|   |   |   |   |   |--- concept_understanding_score <= 8.50
+|   |   |   |   |   |   |--- improvement_rate <= -4.80
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  -4.80
+|   |   |   |   |   |   |   |--- ai_ethics_score <= 4.50
+|   |   |   |   |   |   |   |   |--- age <= 22.50
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index <= 6.90
+|   |   |   |   |   |   |   |   |   |   |--- tutoring_hours <= 4.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- tutoring_hours >  4.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- study_consistency_index >  6.90
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate <= 2.20
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- improvement_rate >  2.20
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |--- age >  22.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_ethics_score >  4.50
+|   |   |   |   |   |   |   |   |--- tutoring_hours <= 4.15
+|   |   |   |   |   |   |   |   |   |--- ChatGPT_usage <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 37.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  37.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |   |   |   |--- ChatGPT_usage >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- tutoring_hours >  4.15
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  8.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 92.00
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  92.00
+|   |   |   |   |   |   |   |--- attendance_percentage <= 60.90
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- attendance_percentage >  60.90
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  42.15
+|   |   |   |   |   |--- ai_prompts_per_week <= 52.50
+|   |   |   |   |   |   |--- study_consistency_index <= 8.80
+|   |   |   |   |   |   |   |--- ai_prompts_per_week <= 38.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_prompts_per_week >  38.50
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 56.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  56.50
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes <= 95.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_usage_time_minutes >  95.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- study_consistency_index >  8.80
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 53.25
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  53.25
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 59.55
+|   |   |   |   |   |   |   |   |   |--- concept_understanding_score <= 9.50
+|   |   |   |   |   |   |   |   |   |   |--- grade_level <= 11.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- grade_level >  11.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- concept_understanding_score >  9.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- assignment_scores_avg >  59.55
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- ai_prompts_per_week >  52.50
+|   |   |   |   |   |   |--- ChatGPT_usage <= 0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ChatGPT_usage >  0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |--- assignment_scores_avg >  64.85
+|   |   |--- concept_understanding_score <= 4.50
+|   |   |   |--- last_exam_score <= 32.50
+|   |   |   |   |--- assignment_scores_avg <= 90.45
+|   |   |   |   |   |--- concept_understanding_score <= 2.50
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 3.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  3.50
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 75.85
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 86.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- ai_generated_content_percentage >  86.00
+|   |   |   |   |   |   |   |   |   |--- ai_dependency_score <= 8.50
+|   |   |   |   |   |   |   |   |   |   |--- concept_understanding_score <= 1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- concept_understanding_score >  1.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_dependency_score >  8.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  75.85
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 86.00
+|   |   |   |   |   |   |   |   |   |--- age <= 23.50
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours <= 6.75
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |   |--- sleep_hours >  6.75
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- age >  23.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  86.00
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= 11.40
+|   |   |   |   |   |   |   |   |   |   |--- social_media_hours <= 1.55
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- social_media_hours >  1.55
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  11.40
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- concept_understanding_score >  2.50
+|   |   |   |   |   |   |--- tutoring_hours <= 1.20
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- tutoring_hours >  1.20
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 41.50
+|   |   |   |   |   |   |   |   |--- ai_usage_purpose_Homework <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_usage_purpose_Homework >  0.50
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 91.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  91.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  41.50
+|   |   |   |   |   |   |   |   |--- social_media_hours <= 0.70
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- social_media_hours >  0.70
+|   |   |   |   |   |   |   |   |   |--- sleep_hours <= 7.00
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 28.00
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  28.00
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- sleep_hours >  7.00
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 71.65
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  71.65
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- assignment_scores_avg >  90.45
+|   |   |   |   |   |--- improvement_rate <= 4.35
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- improvement_rate >  4.35
+|   |   |   |   |   |   |--- last_exam_score <= 26.50
+|   |   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving <= 0.50
+|   |   |   |   |   |   |   |   |--- study_hours_per_day <= 4.40
+|   |   |   |   |   |   |   |   |   |--- ai_dependency_score <= 8.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ai_dependency_score >  8.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- study_hours_per_day >  4.40
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- last_exam_score >  26.50
+|   |   |   |   |   |   |   |--- ai_prompts_per_week <= 8.00
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- ai_prompts_per_week >  8.00
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  32.50
+|   |   |   |   |--- assignment_scores_avg <= 71.35
+|   |   |   |   |   |--- Gemini_usage <= 0.50
+|   |   |   |   |   |   |--- sleep_hours <= 5.30
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- sleep_hours >  5.30
+|   |   |   |   |   |   |   |--- attendance_percentage <= 48.60
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- attendance_percentage >  48.60
+|   |   |   |   |   |   |   |   |--- social_media_hours <= 4.10
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 59.50
+|   |   |   |   |   |   |   |   |   |   |--- grade_level <= 2.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- grade_level >  2.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  59.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- social_media_hours >  4.10
+|   |   |   |   |   |   |   |   |   |--- last_exam_score <= 48.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- last_exam_score >  48.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_purpose_Homework <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_purpose_Homework >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Gemini_usage >  0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- assignment_scores_avg >  71.35
+|   |   |   |   |   |--- improvement_rate <= 19.45
+|   |   |   |   |   |   |--- improvement_rate <= -7.45
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- improvement_rate >  -7.45
+|   |   |   |   |   |   |   |--- tutoring_hours <= 3.65
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 95.50
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 21.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  21.50
+|   |   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 29.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  29.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  95.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- tutoring_hours >  3.65
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- improvement_rate >  19.45
+|   |   |   |   |   |   |--- class_participation_score <= 1.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- class_participation_score >  1.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |--- concept_understanding_score >  4.50
+|   |   |   |--- concept_understanding_score <= 6.50
+|   |   |   |   |--- last_exam_score <= 35.50
+|   |   |   |   |   |--- study_hours_per_day <= 3.75
+|   |   |   |   |   |   |--- assignment_scores_avg <= 72.60
+|   |   |   |   |   |   |   |--- tutoring_hours <= 2.15
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- tutoring_hours >  2.15
+|   |   |   |   |   |   |   |   |--- ai_ethics_score <= 3.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_ethics_score >  3.50
+|   |   |   |   |   |   |   |   |   |--- ai_ethics_score <= 5.50
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg <= 66.95
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- assignment_scores_avg >  66.95
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ai_ethics_score >  5.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- assignment_scores_avg >  72.60
+|   |   |   |   |   |   |   |--- ai_usage_purpose_Exam Prep <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_usage_purpose_Exam Prep >  0.50
+|   |   |   |   |   |   |   |   |--- last_exam_score <= 26.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- last_exam_score >  26.00
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- study_hours_per_day >  3.75
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- last_exam_score >  35.50
+|   |   |   |   |   |--- attendance_percentage <= 40.45
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- attendance_percentage >  40.45
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- concept_understanding_score >  6.50
+|   |   |   |   |--- class: 1
+|--- last_exam_score >  53.50
+|   |--- assignment_scores_avg <= 61.85
+|   |   |--- concept_understanding_score <= 2.50
+|   |   |   |--- last_exam_score <= 72.50
+|   |   |   |   |--- study_consistency_index <= 8.65
+|   |   |   |   |   |--- assignment_scores_avg <= 52.45
+|   |   |   |   |   |   |--- ai_generated_content_percentage <= 69.00
+|   |   |   |   |   |   |   |--- ChatGPT_usage <= 0.50
+|   |   |   |   |   |   |   |   |--- social_media_hours <= 4.35
+|   |   |   |   |   |   |   |   |   |--- study_hours_per_day <= 4.00
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score <= 65.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |   |   |   |   |--- last_exam_score >  65.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- study_hours_per_day >  4.00
+|   |   |   |   |   |   |   |   |   |   |--- class_participation_score <= 3.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- class_participation_score >  3.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- social_media_hours >  4.35
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ChatGPT_usage >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_generated_content_percentage >  69.00
+|   |   |   |   |   |   |   |--- last_exam_score <= 63.50
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week <= 113.00
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- ai_prompts_per_week >  113.00
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage <= 64.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- attendance_percentage >  64.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- last_exam_score >  63.50
+|   |   |   |   |   |   |   |   |--- ai_dependency_score <= 5.00
+|   |   |   |   |   |   |   |   |   |--- sleep_hours <= 6.45
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- ai_usage_purpose_Doubt Solving >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- sleep_hours >  6.45
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_dependency_score >  5.00
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- assignment_scores_avg >  52.45
+|   |   |   |   |   |   |--- last_exam_score <= 61.50
+|   |   |   |   |   |   |   |--- ai_dependency_score <= 6.50
+|   |   |   |   |   |   |   |   |--- ai_ethics_score <= 3.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- ai_ethics_score >  3.50
+|   |   |   |   |   |   |   |   |   |--- improvement_rate <= 35.45
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- improvement_rate >  35.45
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_dependency_score >  6.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- last_exam_score >  61.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- study_consistency_index >  8.65
+|   |   |   |   |   |--- assignment_scores_avg <= 61.55
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- assignment_scores_avg >  61.55
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |--- last_exam_score >  72.50
+|   |   |   |   |--- assignment_scores_avg <= 33.95
+|   |   |   |   |   |--- study_hours_per_day <= 4.75
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- study_hours_per_day >  4.75
+|   |   |   |   |   |   |--- study_consistency_index <= 4.65
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- study_consistency_index >  4.65
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- assignment_scores_avg >  33.95
+|   |   |   |   |   |--- class: 1
+|   |   |--- concept_understanding_score >  2.50
+|   |   |   |--- last_exam_score <= 70.50
+|   |   |   |   |--- concept_understanding_score <= 5.50
+|   |   |   |   |   |--- social_media_hours <= 3.75
+|   |   |   |   |   |   |--- ChatGPT_usage <= 0.50
+|   |   |   |   |   |   |   |--- assignment_scores_avg <= 54.45
+|   |   |   |   |   |   |   |   |--- study_consistency_index <= 3.10
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- study_consistency_index >  3.10
+|   |   |   |   |   |   |   |   |   |--- class_participation_score <= 2.50
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- class_participation_score >  2.50
+|   |   |   |   |   |   |   |   |   |   |--- Claude_usage <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |   |   |   |   |--- Claude_usage >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- assignment_scores_avg >  54.45
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ChatGPT_usage >  0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- social_media_hours >  3.75
+|   |   |   |   |   |   |--- ai_usage_time_minutes <= 171.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- ai_usage_time_minutes >  171.50
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage <= 26.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ai_generated_content_percentage >  26.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- concept_understanding_score >  5.50
+|   |   |   |   |   |--- Gemini_usage <= 0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Gemini_usage >  0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- last_exam_score >  70.50
+|   |   |   |   |--- class: 1
+|   |--- assignment_scores_avg >  61.85
+|   |   |--- Gemini_usage <= 0.50
+|   |   |   |--- class: 1
+|   |   |--- Gemini_usage >  0.50
+|   |   |   |--- class: 1

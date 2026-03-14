@@ -19,8 +19,12 @@ def calculate_overlap(features_list_1, features_list_2):
     
     if not set1 or not set2:
         return 0.0
-        
-    overlap = len(set1.intersection(set2))
-    total_unique = len(set1.union(set2))
     
-    return float(overlap / total_unique)
+    intersection=len(set1 & set2)
+    union= len(set1 | set2)
+    
+    jaccard_similarity=intersection/union
+    #jaccard_distance=1-jaccard_similarity
+    
+    
+    return jaccard_similarity

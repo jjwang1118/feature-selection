@@ -60,24 +60,33 @@ if __name__ == "__main__":
     # Create results directory
     results_dir = f'results/exp{exp_idx}'
     os.makedirs(results_dir, exist_ok=True)
+    model_file=f"model/exp_{exp_idx if exp_idx != 0 else 'baseline'}"
+    model_name=f"exp_{exp_idx if exp_idx != 0 else 'baseline'}.pkl"
 
     if exp_idx == 0:
         print("\n--- Running Baseline (All Features) ---")
-        clf = DecisionTreeClassifier(
-            criterion='entropy',
-            random_state=SEED,
-            class_weight='balanced'
-        )
-        clf.fit(X_train, y_train)
+        if os.path.exists(f"{model_file}/{model_name}"):
+            print(f"✅ exp_{exp_idx if exp_idx !=0 else 'baseline'} model already exists. Skipping training.")
+            clf = joblib.load(f"{model_file}/{model_name}")  # 載入已存在的模型
+        else:
+            clf = DecisionTreeClassifier(
+                criterion='entropy',
+                random_state=SEED,
+                class_weight='balanced'
+            )
+            clf.fit(X_train, y_train)
+            os.makedirs(model_file, exist_ok=True) # Creates the folder if it doesn't exist
+            joblib.dump(clf, f"{model_file}/{model_name}")
+            print(f"✅ Baseline model saved to {model_file}/{model_name}")
 
-        model_file=f"model/exp_{exp_idx if exp_idx != 0 else 'baseline'}"
-        model_name=f"exp_{exp_idx if exp_idx != 0 else 'baseline'}.pkl"
-        import os
-        os.makedirs(model_file, exist_ok=True) # Creates the folder if it doesn't exist
-        joblib.dump(clf, f"{model_file}/{model_name}")
-        print(f"✅ Baseline model saved to {model_file}/{model_name}")
         tv.visualize_decision_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'])
         tv.visualize_decision_tree_matplotlib(clf, save_path=f"{results_dir}/baseline_tree_matplotlib.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.export_tree_text(clf, save_path=f"{results_dir}/baseline_tree.txt", feature_names=X_train.columns.tolist())
+        matric=evaluate_model(clf, X_test, y_test)
+
+        with open(f"{results_dir}/baseline_metrics.json", "w", encoding="utf-8") as f:
+            json.dump(matric, f, indent=4, ensure_ascii=False)
+
 
 
 
