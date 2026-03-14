@@ -106,14 +106,14 @@ if __name__ == "__main__":
         # === Matchup 1: Wrapper vs Filter ===
         print(f"\n[Matchup 1: Wrapper vs Filter (N={n_wrapper})]")
         
-        dt_wrap = DecisionTreeClassifier(random_state=SEED)
+        dt_wrap = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         dt_wrap.fit(X_train[wrapper_features], y_train)
         metrics_wrap = evaluate_model(dt_wrap, X_test[wrapper_features], y_test)
         
         joblib.dump(dt_wrap, f"{model_dir}/wrapper_model.pkl")
         tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'], max_depth=10)
         
-        dt_filt_1 = DecisionTreeClassifier(random_state=SEED)
+        dt_filt_1 = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         dt_filt_1.fit(X_train[filter_features_for_wrapper], y_train)
         metrics_filt_1 = evaluate_model(dt_filt_1, X_test[filter_features_for_wrapper], y_test)
         joblib.dump(dt_filt_1, f"{model_dir}/filter_model_wrapper.pkl")
@@ -125,7 +125,7 @@ if __name__ == "__main__":
         # === Matchup 2: Embedded vs Filter ===
         print(f"\n[Matchup 2: Embedded vs Filter (N={n_embedded})]")
         
-        dt_embed = DecisionTreeClassifier(random_state=SEED)
+        dt_embed = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         dt_embed.fit(X_train[embedded_features], y_train)
         metrics_embed = evaluate_model(dt_embed, X_test[embedded_features], y_test)
         
@@ -133,7 +133,7 @@ if __name__ == "__main__":
         tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'], max_depth=10)
         
         
-        dt_filt_2 = DecisionTreeClassifier(random_state=SEED)
+        dt_filt_2 = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         dt_filt_2.fit(X_train[filter_features_for_embedded], y_train)
         metrics_filt_2 = evaluate_model(dt_filt_2, X_test[filter_features_for_embedded], y_test)
         

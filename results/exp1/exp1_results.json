@@ -9,10 +9,10 @@
                 "concept_understanding_score"
             ],
             "metrics": {
-                "accuracy": 0.920625,
-                "precision": 0.9635193133047211,
-                "recall": 0.9465917076598735,
-                "f1_score": 0.9549805033676001
+                "accuracy": 0.913125,
+                "precision": 0.9579172610556348,
+                "recall": 0.94378074490513,
+                "f1_score": 0.9507964601769912
             }
         },
         "filter": {
@@ -22,10 +22,10 @@
                 "concept_understanding_score"
             ],
             "metrics": {
-                "accuracy": 0.920625,
-                "precision": 0.9635193133047211,
-                "recall": 0.9465917076598735,
-                "f1_score": 0.9549805033676001
+                "accuracy": 0.913125,
+                "precision": 0.9579172610556348,
+                "recall": 0.94378074490513,
+                "f1_score": 0.9507964601769912
             }
         }
     },
@@ -40,10 +40,10 @@
                 "concept_understanding_score"
             ],
             "metrics": {
-                "accuracy": 0.918125,
-                "precision": 0.9575070821529745,
+                "accuracy": 0.913125,
+                "precision": 0.952112676056338,
                 "recall": 0.9501054111033029,
-                "f1_score": 0.9537918871252205
+                "f1_score": 0.9511079845233907
             }
         },
         "filter": {
@@ -54,10 +54,10 @@
                 "concept_understanding_score"
             ],
             "metrics": {
-                "accuracy": 0.918125,
-                "precision": 0.9575070821529745,
+                "accuracy": 0.913125,
+                "precision": 0.952112676056338,
                 "recall": 0.9501054111033029,
-                "f1_score": 0.9537918871252205
+                "f1_score": 0.9511079845233907
             }
         }
     }
