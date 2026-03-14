@@ -84,8 +84,23 @@ if __name__ == "__main__":
         tv.export_tree_text(clf, save_path=f"{results_dir}/baseline_tree.txt", feature_names=X_train.columns.tolist())
         matric=evaluate_model(clf, X_test, y_test)
 
+        # matrix , depth and nodes
+        matric['depth_nodes']={}
+        matric['depth_nodes']['max_depth']=int(clf.get_depth())
+        matric['depth_nodes']['n_leaves']=int(clf.get_n_leaves())
         with open(f"{results_dir}/baseline_metrics.json", "w", encoding="utf-8") as f:
             json.dump(matric, f, indent=4, ensure_ascii=False)
+
+        # importance of features
+        feature_importance={}
+        importances = clf.feature_importances_.tolist()
+        feature_names= X_train.columns.tolist()
+        for feature,value in  zip(feature_names, importances):
+            feature_importance[feature]=value
+        
+        feature_importance_sorted = dict(sorted(feature_importance.items(), key=lambda item: item[1], reverse=True))
+        with open(f"{results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
+            json.dump(feature_importance_sorted, f, indent=4, ensure_ascii=False)
 
 
 

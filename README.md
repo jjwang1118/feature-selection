@@ -41,6 +41,7 @@
 - `json`
 - `os`
 - `pathlib`
+-  實際情況請參考 `requirements.txt`
 
 ## 🐍 環境建立
 ```bash
@@ -64,10 +65,28 @@ pip install -r requirements.txt
 - 資料分割比例: **80%** 訓練集，**20%** 測試集
 
 ## 工作
-- **資料處理**: 時間處理 、編碼
-- **資料分析**: 特徵分佈 、找出極端值(丟)
+- **資料處理**
+    - 時間處理
+    - 編碼(one-hot encoding)
+    - 拆分使用工具欄位
+    - 處理缺失值(丟/補)
+    - 篩選影響欄位('student_id','passed', 'performance_category', 'final_score')
+    - split data 內使用 stratify 以保持資料分佈一致
+
+- **資料分析**: 
+    - 個特徵平均值、中位數、缺失值數量
+    - 特徵分佈圖
+    - 分析資料是否平衡 
+        - 根據 #stastic/med_mean.json 欄位    "passed{"mean": 0.88925,"median": 1.0} 可以知道資料不平衡，因為大多數學生都及格了
+    - 分析訓練集和測試集的分佈是否相似
+
 - **模型訓練**: baseline、wrapper、filter、embedded
-- **模型評估**: accuracy、precision、recall、F1-score、feature
+    - 要點跟**實驗內容**一致
+    - 使用random seed 確保實驗可重現
+    - 將樹狀結構視覺化
+- **模型評估**
+    - 評估指標: accuracy、precision、recall、F1-score
+    - 各實驗相似度 : jaccard similarity , jaccard distance
 
 ## 📁 目錄架構
 
