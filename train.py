@@ -80,7 +80,6 @@ if __name__ == "__main__":
             print(f"✅ Baseline model saved to {model_file}/{model_name}")
 
         tv.visualize_decision_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(clf, save_path=f"{results_dir}/baseline_tree_matplotlib.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(clf, save_path=f"{results_dir}/baseline_tree.txt", feature_names=X_train.columns.tolist())
         matric=evaluate_model(clf, X_test, y_test)
 
@@ -147,7 +146,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree_matplotlib.png", feature_names=wrapper_features, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=wrapper_features)
         
         # Train or load Filter model (matchup 1)
@@ -169,7 +167,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper_matplotlib.png", feature_names=filter_features_for_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_filt_1, save_path=f"{results_dir}/filter_tree_wrapper.txt", feature_names=filter_features_for_wrapper)
         
         overlap_1 = calculate_overlap(wrapper_features, filter_features_for_wrapper)
@@ -197,7 +194,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree_matplotlib.png", feature_names=embedded_features, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=embedded_features)
         
         
@@ -220,7 +216,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded_matplotlib.png", feature_names=filter_features_for_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_filt_2, save_path=f"{results_dir}/filter_tree_embedded.txt", feature_names=filter_features_for_embedded)
         
         overlap_2 = calculate_overlap(embedded_features, filter_features_for_embedded)
@@ -342,7 +337,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree_matplotlib.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_filt, save_path=f"{results_dir}/filter_tree.txt", feature_names=features_filter)
 
         # 2. Wrapper Model (exp2)
@@ -364,7 +358,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree_matplotlib.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=features_wrapper)
 
         # 3. Embedded Model (exp2)
@@ -386,7 +379,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree_matplotlib.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=features_embedded)
 
         # 列印結果比較
@@ -494,7 +486,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_filt, save_path=f"{results_dir}/filter_tree.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_filt, save_path=f"{results_dir}/filter_tree_matplotlib.png", feature_names=features_filter, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_filt, save_path=f"{results_dir}/filter_tree.txt", feature_names=features_filter)
 
         # 2. Wrapper Model
@@ -516,7 +507,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_wrap, save_path=f"{results_dir}/wrapper_tree.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_wrap, save_path=f"{results_dir}/wrapper_tree_matplotlib.png", feature_names=features_wrapper, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_wrap, save_path=f"{results_dir}/wrapper_tree.txt", feature_names=features_wrapper)
 
         # 3. Embedded Model
@@ -538,7 +528,6 @@ if __name__ == "__main__":
         }
         
         tv.visualize_decision_tree(dt_embed, save_path=f"{results_dir}/embedded_tree.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(dt_embed, save_path=f"{results_dir}/embedded_tree_matplotlib.png", feature_names=features_embedded, class_names=['Not Passed', 'Passed'], max_depth=10)
         tv.export_tree_text(dt_embed, save_path=f"{results_dir}/embedded_tree.txt", feature_names=features_embedded)
 
         # 列印結果比較
