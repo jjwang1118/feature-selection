@@ -5,6 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 # from util.feature_selectors import run_filter, run_wrapper, run_embedded
 from util.evaluation import evaluate_model, calculate_overlap
+from util.feature_selectors import run_filter, run_wrapper, run_embedded
 import joblib
 import util.tree_visualize as tv
 
@@ -14,7 +15,7 @@ def load_split_data(data_path):
     Loads the pre-split train/test data from Wang's pipeline, 
     separates features/targets, and handles categorical encoding.
     """
-    split_path = f"{data_path}/split"
+    split_path = f"{data_path}"
     
     train_df = pd.read_csv(f"{split_path}/train.csv")
     test_df = pd.read_csv(f"{split_path}/test.csv")
@@ -54,7 +55,7 @@ if __name__ == "__main__":
     
     # 2. Prepare Data (load pre-split data)
     split_path = f"{data_path}/split"
-    (X_train, y_train), (X_test, y_test) = load_split_data(split_path)
+    X_train, X_test, y_train, y_test = load_split_data(split_path)
     print(f"Data shape: X_train {X_train.shape}, X_test {X_test.shape}")
 
     # Create results directory
@@ -70,13 +71,15 @@ if __name__ == "__main__":
         )
         clf.fit(X_train, y_train)
 
-        model_file=f"model/exp_{i if exp_idx != 0 else "baseline/"}
-        model_name=f"exp_{i if exp_idx != 0 else "baseline"}.pkl"
-
+        model_file=f"model/exp_{exp_idx if exp_idx != 0 else 'baseline'}"
+        model_name=f"exp_{exp_idx if exp_idx != 0 else 'baseline'}.pkl"
+        import os
+        os.makedirs(model_file, exist_ok=True) # Creates the folder if it doesn't exist
+        joblib.dump(clf, f"{model_file}/{model_name}")
         joblib.dump(clf, f"{model_file}/{model_name}")
         print(f"✅ Baseline model saved to {model_file}/{model_name}")
-        tv.visualize_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns, class_names=['Not Passed', 'Passed'])
-        tv.visualize_decision_tree_matplotlib(clf, save_path=f"{results_dir}/baseline_tree_matplotlib.png", feature_names=X_train.columns, class_names=['Not Passed', 'Passed'], max_depth=10)
+        tv.visualize_decision_tree(clf,save_path=f"{results_dir}/baseline_tree.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'])
+        tv.visualize_decision_tree_matplotlib(clf, save_path=f"{results_dir}/baseline_tree_matplotlib.png", feature_names=X_train.columns.tolist(), class_names=['Not Passed', 'Passed'], max_depth=10)
 
 
 
