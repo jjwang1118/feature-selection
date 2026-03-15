@@ -6,18 +6,18 @@
         "ai_generated_content_percentage": 0.10865252187174362,
         "Copilot_usage": 0.007541301805572244
     },
-    "wrapper_random_forest": {
-        "last_exam_score": 0.4247262133538301,
-        "assignment_scores_avg": 0.24655846562954228,
-        "concept_understanding_score": 0.17044018913027842,
-        "ai_generated_content_percentage": 0.0859629944383528,
-        "attendance_percentage": 0.07231213744799633
+    "wrapper": {
+        "last_exam_score": 0.4275505898134304,
+        "assignment_scores_avg": 0.24709699260902954,
+        "concept_understanding_score": 0.17077795175691607,
+        "ai_generated_content_percentage": 0.08759652528052621,
+        "ai_prompts_per_week": 0.06697794054009786
     },
-    "embedded_gradient_boosting": {
-        "last_exam_score": 0.4310901518933739,
-        "assignment_scores_avg": 0.24470032166651706,
-        "concept_understanding_score": 0.1723967841576076,
-        "ai_generated_content_percentage": 0.08416046445088726,
-        "social_media_hours": 0.0676522778316141
+    "embedded": {
+        "last_exam_score": 0.42789567516347543,
+        "assignment_scores_avg": 0.2452264288415039,
+        "concept_understanding_score": 0.16967614233958359,
+        "ai_generated_content_percentage": 0.08815517070714933,
+        "ai_prompts_per_week": 0.06904658294828778
     }
 }

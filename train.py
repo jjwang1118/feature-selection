@@ -445,23 +445,19 @@ if __name__ == "__main__":
         print(f"📁 Results will be saved to: {k_results_dir}")
         print(f"📁 Models will be saved to: {model_dir}")
         
-        # 匯入其他的機器學習模型來「幫忙挑選特徵」
-        from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-        
         print(f"Target K set to {k_value}.")
-        print("Wrapper and Embedded will use advanced models (Random Forest & Gradient Boosting) to select features.")
+        print("Wrapper and Embedded will use Decision Tree to select features.")
         
+        dt_selector = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         # Step A: 三種方法各自選出 K 個特徵
         # 1. Filter: 還是用數學方法
         features_filter = run_filter(X_train, y_train, k=k_value)
         
-        # 2. Wrapper: 用 Random Forest 幫忙挑特徵
-        rf_selector = RandomForestClassifier(random_state=SEED)
-        features_wrapper = run_wrapper_k(X_train, y_train, k=k_value, estimator=rf_selector)
+        # 2. Wrapper: 用 Decision Tree 幫忙挑特徵
+        features_wrapper = run_wrapper_k(X_train, y_train, k=k_value, estimator=dt_selector)
         
-        # 3. Embedded: 用 Gradient Boosting 幫忙挑特徵
-        gb_selector = GradientBoostingClassifier(random_state=SEED)
-        features_embedded = run_embedded_k(X_train, y_train, k=k_value, estimator=gb_selector)
+        # 3. Embedded: 用 Decision Tree 幫忙挑特徵
+        features_embedded = run_embedded_k(X_train, y_train, k=k_value, estimator=dt_selector)
         
         # === 訓練與評估三種模型 (注意：這裡還是要用 Base Decision Tree 來當裁判！) ===
         
@@ -528,8 +524,8 @@ if __name__ == "__main__":
         # 列印結果比較
         print(f"\n[Transferability Results (N={k_value})]")
         print(f"Filter F1:   {metrics_filt['f1_score']:.4f} (Features: {features_filter})")
-        print(f"Wrapper F1:  {metrics_wrap['f1_score']:.4f} (Features picked by Random Forest)")
-        print(f"Embedded F1: {metrics_embed['f1_score']:.4f} (Features picked by Gradient Boosting)")
+        print(f"Wrapper F1:  {metrics_wrap['f1_score']:.4f} (Features picked by Decision Tree)")
+        print(f"Embedded F1: {metrics_embed['f1_score']:.4f} (Features picked by Decision Tree)")
 
         # === Package and Save JSON Results ===
         exp3_results = {
@@ -538,11 +534,11 @@ if __name__ == "__main__":
                 "selected_features": features_filter,
                 "metrics": metrics_filt
             },
-            "wrapper_random_forest": {
+            "wrapper": {
                 "selected_features": features_wrapper,
                 "metrics": metrics_wrap
             },
-            "embedded_gradient_boosting": {
+            "embedded": {
                 "selected_features": features_embedded,
                 "metrics": metrics_embed
             }
@@ -556,8 +552,8 @@ if __name__ == "__main__":
         # Save feature importance for all models in exp3
         feature_importance_exp3 = {
             "filter": {},
-            "wrapper_random_forest": {},
-            "embedded_gradient_boosting": {}
+            "wrapper": {},
+            "embedded": {}
         }
         
         # Filter importance
@@ -567,13 +563,13 @@ if __name__ == "__main__":
         
         # Wrapper importance
         for feature, value in zip(features_wrapper, dt_wrap.feature_importances_.tolist()):
-            feature_importance_exp3["wrapper_random_forest"][feature] = value
-        feature_importance_exp3["wrapper_random_forest"] = dict(sorted(feature_importance_exp3["wrapper_random_forest"].items(), key=lambda item: item[1], reverse=True))
+            feature_importance_exp3["wrapper"][feature] = value
+        feature_importance_exp3["wrapper"] = dict(sorted(feature_importance_exp3["wrapper"].items(), key=lambda item: item[1], reverse=True))
         
         # Embedded importance
         for feature, value in zip(features_embedded, dt_embed.feature_importances_.tolist()):
-            feature_importance_exp3["embedded_gradient_boosting"][feature] = value
-        feature_importance_exp3["embedded_gradient_boosting"] = dict(sorted(feature_importance_exp3["embedded_gradient_boosting"].items(), key=lambda item: item[1], reverse=True))
+            feature_importance_exp3["embedded"][feature] = value
+        feature_importance_exp3["embedded"] = dict(sorted(feature_importance_exp3["embedded"].items(), key=lambda item: item[1], reverse=True))
         
         # 保存到 k 子目錄
         with open(f"{k_results_dir}/feature_importance.json", "w", encoding="utf-8") as f:
@@ -589,9 +585,9 @@ if __name__ == "__main__":
         
         # Add current k value results
         jaccard_current = {
-            "filter_vs_wrapper_random_forest": calculate_overlap(features_filter, features_wrapper),
-            "filter_vs_embedded_gradient_boosting": calculate_overlap(features_filter, features_embedded),
-            "wrapper_random_forest_vs_embedded_gradient_boosting": calculate_overlap(features_wrapper, features_embedded)
+            "filter_vs_wrapper": calculate_overlap(features_filter, features_wrapper),
+            "filter_vs_embedded": calculate_overlap(features_filter, features_embedded),
+            "wrapper_vs_embedded": calculate_overlap(features_wrapper, features_embedded)
         }
         
         jaccard_all[f"k_{k_value}"] = jaccard_current

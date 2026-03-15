@@ -19,41 +19,41 @@
             }
         }
     },
-    "wrapper_random_forest": {
+    "wrapper": {
         "selected_features": [
             "ai_generated_content_percentage",
+            "ai_prompts_per_week",
             "last_exam_score",
             "assignment_scores_avg",
-            "attendance_percentage",
             "concept_understanding_score"
         ],
         "metrics": {
-            "accuracy": 0.920625,
-            "precision": 0.9569816643159379,
-            "recall": 0.9536191145467322,
-            "f1_score": 0.9552974304822246,
+            "accuracy": 0.9125,
+            "precision": 0.953356890459364,
+            "recall": 0.9479971890372453,
+            "f1_score": 0.9506694855532065,
             "depth_nodes": {
-                "max_depth": 21,
-                "n_leaves": 437
+                "max_depth": 20,
+                "n_leaves": 450
             }
         }
     },
-    "embedded_gradient_boosting": {
+    "embedded": {
         "selected_features": [
-            "social_media_hours",
             "ai_generated_content_percentage",
+            "ai_prompts_per_week",
             "concept_understanding_score",
             "assignment_scores_avg",
             "last_exam_score"
         ],
         "metrics": {
-            "accuracy": 0.915,
-            "precision": 0.9528501055594651,
-            "recall": 0.9515108924806747,
-            "f1_score": 0.9521800281293952,
+            "accuracy": 0.91375,
+            "precision": 0.9540636042402827,
+            "recall": 0.9486999297259311,
+            "f1_score": 0.9513742071881607,
             "depth_nodes": {
-                "max_depth": 21,
-                "n_leaves": 460
+                "max_depth": 20,
+                "n_leaves": 448
             }
         }
     }

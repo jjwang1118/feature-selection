@@ -24,51 +24,51 @@
             }
         }
     },
-    "wrapper_random_forest": {
+    "wrapper": {
         "selected_features": [
+            "study_hours_per_day",
             "ai_usage_time_minutes",
             "ai_generated_content_percentage",
             "ai_prompts_per_week",
             "last_exam_score",
             "assignment_scores_avg",
-            "attendance_percentage",
             "concept_understanding_score",
             "study_consistency_index",
             "improvement_rate",
-            "tutoring_hours"
+            "social_media_hours"
         ],
         "metrics": {
-            "accuracy": 0.91625,
-            "precision": 0.9541930937279774,
-            "recall": 0.9515108924806747,
-            "f1_score": 0.9528501055594651,
+            "accuracy": 0.905625,
+            "precision": 0.9478873239436619,
+            "recall": 0.9458889669711876,
+            "f1_score": 0.9468870911009497,
             "depth_nodes": {
-                "max_depth": 18,
-                "n_leaves": 351
+                "max_depth": 20,
+                "n_leaves": 349
             }
         }
     },
-    "embedded_gradient_boosting": {
+    "embedded": {
         "selected_features": [
-            "study_hours_per_day",
-            "ai_prompts_per_week",
-            "tutoring_hours",
-            "attendance_percentage",
-            "improvement_rate",
+            "study_consistency_index",
             "social_media_hours",
+            "study_hours_per_day",
+            "tutoring_hours",
+            "improvement_rate",
             "ai_generated_content_percentage",
+            "ai_prompts_per_week",
             "concept_understanding_score",
             "assignment_scores_avg",
             "last_exam_score"
         ],
         "metrics": {
             "accuracy": 0.91375,
-            "precision": 0.9508771929824561,
-            "recall": 0.9522136331693605,
-            "f1_score": 0.9515449438202247,
+            "precision": 0.9483600837404047,
+            "recall": 0.955024595924104,
+            "f1_score": 0.9516806722689075,
             "depth_nodes": {
-                "max_depth": 20,
-                "n_leaves": 362
+                "max_depth": 19,
+                "n_leaves": 356
             }
         }
     }

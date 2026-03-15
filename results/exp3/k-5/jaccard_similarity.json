@@ -1,5 +1,5 @@
 {
-    "filter_vs_wrapper_random_forest": 0.6666666666666666,
-    "filter_vs_embedded_gradient_boosting": 0.6666666666666666,
-    "wrapper_random_forest_vs_embedded_gradient_boosting": 0.6666666666666666
+    "filter_vs_wrapper": 0.6666666666666666,
+    "filter_vs_embedded": 0.6666666666666666,
+    "wrapper_vs_embedded": 1.0
 }
