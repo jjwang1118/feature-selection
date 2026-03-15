@@ -1,0 +1,10 @@
+{
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "depth_nodes": {
+        "max_depth": 1,
+        "n_leaves": 2
+    }
+}

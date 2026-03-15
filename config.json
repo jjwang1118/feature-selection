@@ -1,7 +1,7 @@
 {
     "data_path": "dataset",
     "k":15,
-    "exp_idx":3,
+    "exp_idx":0,
     "median_mean_cac":"result/stastic/med_mean.json",
     "missing_value":"result/stastic/missing_value.json",
     "feature_visual":"result/stastic/image",

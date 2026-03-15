@@ -22,7 +22,7 @@ def load_split_data(data_path):
     
     # Drop target and data-leakage columns (like final_score)
     drop_cols = ['passed', 'student_id', 'performance_category', 'final_score']
-    
+    # drop_cols = ['passed', 'student_id'] # if we didn't drop it'll have target leakage issue, all metrics will be perfect
     X_train = train_df.drop(columns=drop_cols, errors='ignore')
     y_train = train_df['passed']
     
