@@ -37,8 +37,8 @@
     "embedded": {
         "selected_features": [
             "concept_understanding_score",
-            "last_exam_score",
-            "assignment_scores_avg"
+            "assignment_scores_avg",
+            "last_exam_score"
         ],
         "metrics": {
             "accuracy": 0.913125,

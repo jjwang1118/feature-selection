@@ -108,14 +108,14 @@ if __name__ == "__main__":
         
         model_dir = f"model/exp_{exp_idx}"
         os.makedirs(model_dir, exist_ok=True)
-        
+        dt_selector = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         # Step A: Wrapper
-        wrapper_features = run_wrapper(X_train, y_train)
+        wrapper_features = run_wrapper(X_train, y_train, estimator=dt_selector)
         n_wrapper = len(wrapper_features)
         print(f"Wrapper selected {n_wrapper} features.")
         
         # Step B: Embedded
-        embedded_features = run_embedded(X_train, y_train)
+        embedded_features = run_embedded(X_train, y_train, estimator=dt_selector)
         n_embedded = len(embedded_features)
         print(f"Embedded selected {n_embedded} features.")
         
@@ -297,10 +297,10 @@ if __name__ == "__main__":
         print("\n--- Running Experiment 2 (The Bottleneck Phase) ---")
         model_dir = f"model/exp_{exp_idx}"
         os.makedirs(model_dir, exist_ok=True)
-        
+        dt_selector = DecisionTreeClassifier(criterion='entropy', random_state=SEED, class_weight='balanced')
         #Step A: 找出第一輪的最小值 (Minimum N)
-        n_wrapper_auto = len(run_wrapper(X_train, y_train))
-        n_embedded_auto = len(run_embedded(X_train, y_train))
+        n_wrapper_auto = len(run_wrapper(X_train, y_train, estimator=dt_selector))
+        n_embedded_auto = len(run_embedded(X_train, y_train, estimator=dt_selector))
         min_n = min(n_wrapper_auto, n_embedded_auto)
         
         min_n = max(1, min_n)
@@ -308,8 +308,8 @@ if __name__ == "__main__":
         print(f"Bottleneck activated: Forcing all algorithms to select exactly {min_n} features.")
         # Step B: 三種方法各自選出 min_n 個特徵
         features_filter = run_filter(X_train, y_train, k=min_n)
-        features_wrapper = run_wrapper_k(X_train, y_train, k=min_n)
-        features_embedded = run_embedded_k(X_train, y_train, k=min_n)
+        features_wrapper = run_wrapper_k(X_train, y_train, k=min_n, estimator=dt_selector)
+        features_embedded = run_embedded_k(X_train, y_train, k=min_n, estimator=dt_selector)
         
         # === 訓練與評估三種模型 ===
         
